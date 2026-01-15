@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zambian Heritage - Discover Our History</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="logo">
+                    <a href="/">
+                        <span class="logo-icon">🇿🇲</span>
+                        <span class="logo-text">Zambian Heritage</span>
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="#explore">Explore History</a></li>
+                        <li><a href="#regions">Regions</a></li>
+                        <li><a href="#timeline">Timeline</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <button class="search-btn" aria-label="Search">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="M21 21l-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                    <button class="mobile-menu-btn" aria-label="Menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background">
+            <img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1920&q=80" alt="Victoria Falls, Zambia" />
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content container">
+            <h1>Discover Zambia's Rich Heritage</h1>
+            <p>From prehistoric times to the present day, explore the stories, places, and people that shaped our nation.</p>
+            <a href="#explore" class="btn btn-primary">Start Exploring</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Explorer Section -->
+        <section id="explore" class="explorer-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Explore Zambian History</h2>
+                    <p>Select a time period and location to discover historical events, cultural heritage, and significant moments.</p>
+                </div>
+
+                <!-- Filter Controls -->
+                <div class="filter-controls">
+                    <div class="filter-group">
+                        <label for="era-select">Time Period</label>
+                        <select id="era-select">
+                            <option value="all">All Periods</option>
+                            <option value="prehistoric">Prehistoric Era (3M+ years ago)</option>
+                            <option value="stone-age">Stone Age (3M - 2000 BCE)</option>
+                            <option value="iron-age">Iron Age (300 - 1500 CE)</option>
+                            <option value="kingdoms">Kingdom Era (1500 - 1800)</option>
+                            <option value="colonial">Colonial Period (1800 - 1964)</option>
+                            <option value="independence">Independence Era (1964 - 1991)</option>
+                            <option value="modern">Modern Zambia (1991 - Present)</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="location-select">Location</label>
+                        <select id="location-select">
+                            <option value="all">All Provinces</option>
+                            <option value="lusaka">Lusaka Province</option>
+                            <option value="copperbelt">Copperbelt Province</option>
+                            <option value="southern">Southern Province</option>
+                            <option value="northern">Northern Province</option>
+                            <option value="eastern">Eastern Province</option>
+                            <option value="western">Western Province</option>
+                            <option value="northwestern">North-Western Province</option>
+                            <option value="luapula">Luapula Province</option>
+                            <option value="central">Central Province</option>
+                            <option value="muchinga">Muchinga Province</option>
+                        </select>
+                    </div>
+
+                    <button id="filter-btn" class="btn btn-secondary">Apply Filters</button>
+                </div>
+
+                <!-- Results Grid -->
+                <div id="results-container" class="history-grid">
+                    <!-- Cards will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Timeline -->
+        <section id="timeline" class="timeline-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Journey Through Time</h2>
+                    <p>Key moments that defined Zambian history</p>
+                </div>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">3+ Million Years Ago</span>
+                            <h3>Prehistoric Beginnings</h3>
+                            <p>Early hominid fossils discovered at Kabwe, evidence of some of the earliest human ancestors in Africa.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">300 - 1500 CE</span>
+                            <h3>Bantu Migration</h3>
+                            <p>Bantu-speaking peoples migrate into the region, bringing iron-working technology and agricultural practices.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">17th - 19th Century</span>
+                            <h3>Rise of Kingdoms</h3>
+                            <p>Powerful kingdoms emerge including the Lozi, Bemba, Lunda, and Chewa, establishing complex political systems.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">1855</span>
+                            <h3>Victoria Falls Named</h3>
+                            <p>David Livingstone becomes the first European to view the falls, naming them after Queen Victoria. The local name is Mosi-oa-Tunya ("The Smoke That Thunders").</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">October 24, 1964</span>
+                            <h3>Independence Day</h3>
+                            <p>Northern Rhodesia becomes the Republic of Zambia with Kenneth Kaunda as its first President.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">1991</span>
+                            <h3>Multi-Party Democracy</h3>
+                            <p>Zambia transitions to multi-party democracy with Frederick Chiluba elected as President.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Regions Section -->
+        <section id="regions" class="regions-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Explore by Region</h2>
+                    <p>Discover the unique heritage of each province</p>
+                </div>
+
+                <div class="regions-grid">
+                    <article class="region-card">
+                        <div class="region-image">
+                            <img src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=600&q=80" alt="Southern Province landscape" />
+                        </div>
+                        <div class="region-content">
+                            <h3>Southern Province</h3>
+                            <p>Home to Victoria Falls and the Tonga people, with rich archaeological sites dating back millennia.</p>
+                            <a href="#" class="link-arrow">Explore Southern Province</a>
+                        </div>
+                    </article>
+
+                    <article class="region-card">
+                        <div class="region-image">
+                            <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=80" alt="Copperbelt mining heritage" />
+                        </div>
+                        <div class="region-content">
+                            <h3>Copperbelt Province</h3>
+                            <p>The industrial heartland of Zambia, whose copper mines shaped the nation's modern economy.</p>
+                            <a href="#" class="link-arrow">Explore Copperbelt Province</a>
+                        </div>
+                    </article>
+
+                    <article class="region-card">
+                        <div class="region-image">
+                            <img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&q=80" alt="Western Province wetlands" />
+                        </div>
+                        <div class="region-content">
+                            <h3>Western Province</h3>
+                            <p>Land of the Lozi Kingdom and the famous Kuomboka ceremony, a tradition spanning centuries.</p>
+                            <a href="#" class="link-arrow">Explore Western Province</a>
+                        </div>
+                    </article>
+
+                    <article class="region-card">
+                        <div class="region-image">
+                            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&q=80" alt="Northern Province landscape" />
+                        </div>
+                        <div class="region-content">
+                            <h3>Northern Province</h3>
+                            <p>Homeland of the Bemba people, featuring ancient rock paintings and the Kalambo Falls.</p>
+                            <a href="#" class="link-arrow">Explore Northern Province</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-content">
+                        <h2>Preserving Our Heritage</h2>
+                        <p>Zambian Heritage is dedicated to documenting, preserving, and sharing the rich history of our nation. From the earliest human settlements to our journey as an independent nation, every story matters.</p>
+                        <p>Our mission is to make Zambian history accessible to everyone—students, researchers, and anyone curious about the land between the Zambezi and the Congo.</p>
+                        <a href="#" class="btn btn-primary">Learn More About Us</a>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1590845947698-8924d7409b56?w=800&q=80" alt="Traditional Zambian artifacts" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter -->
+        <section class="newsletter-section">
+            <div class="container">
+                <div class="newsletter-content">
+                    <h2>Stay Connected</h2>
+                    <p>Subscribe to receive updates about new historical discoveries and cultural events.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Enter your email address" required />
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo-icon">🇿🇲</span>
+                        <span class="logo-text">Zambian Heritage</span>
+                    </div>
+                    <p>Preserving and sharing Zambia's rich history for future generations.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="#timeline">Timeline</a></li>
+                        <li><a href="#regions">Regions</a></li>
+                        <li><a href="#">Archaeological Sites</a></li>
+                        <li><a href="#">Cultural Heritage</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Research Archives</a></li>
+                        <li><a href="#">Educational Materials</a></li>
+                        <li><a href="#">Image Gallery</a></li>
+                        <li><a href="#">Bibliography</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="#about">Our Mission</a></li>
+                        <li><a href="#">Contributors</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Support the Project</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Zambian Heritage. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook">FB</a>
+                    <a href="#" aria-label="Twitter">TW</a>
+                    <a href="#" aria-label="Instagram">IG</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
