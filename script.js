@@ -176,8 +176,9 @@ const heritageSites = [
         category: "archaeological-site",
         location: "northwestern",
         description: "A significant rock shelter site containing ancient rock engravings and archaeological evidence of early human habitation in northwestern Zambia.",
-        image: "https://drive.google.com/uc?export=view&id=1FrcpX7fEf2h60Jr-TAmdbumWIsZfoAKU",
-        tag: "Archaeological Site"
+        image: "images/kifubwa/main.jpg",
+        tag: "Archaeological Site",
+        link: "kifubwa.html"
     },
     {
         id: 18,
