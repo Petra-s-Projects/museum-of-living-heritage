@@ -140,8 +140,9 @@ const heritageSites = [
         category: "rock-art",
         location: "central",
         description: "Ancient rock art site in Mkushi featuring geometric patterns and symbolic figures dating back thousands of years, offering insights into the spiritual beliefs of early inhabitants.",
-        image: "https://drive.google.com/uc?export=view&id=1wAv5zt9zp8wn6JTvF8JyvsSRxoDWcgpP",
-        tag: "Rock Art"
+        image: "images/nsalu-cave/main.jpg",
+        tag: "Rock Art",
+        link: "nsalu-cave.html"
     },
     {
         id: 14,
