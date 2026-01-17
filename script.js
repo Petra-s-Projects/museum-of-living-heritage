@@ -124,8 +124,9 @@ const heritageSites = [
         category: "rock-art",
         location: "northern",
         description: "One of the most significant rock art sites in Zambia, featuring over 1,000 ancient paintings including human figures, animals, and geometric designs spanning thousands of years.",
-        image: "https://drive.google.com/uc?export=view&id=1ZrdAhqKFqayRK3gS3aS9gipUyNst6_Pv",
-        tag: "Rock Art"
+        image: "images/mwela-rocks/main.jpg",
+        tag: "Rock Art",
+        link: "mwela-rocks.html"
     },
     {
         id: 13,
