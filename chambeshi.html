@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chambeshi Monument - Museum of Living Heritage</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .gallery-hero {
+            position: relative;
+            height: 50vh;
+            min-height: 400px;
+            display: flex;
+            align-items: flex-end;
+            margin-top: 72px;
+            overflow: hidden;
+        }
+        .gallery-hero img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .gallery-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(26,26,26,0.8) 0%, rgba(26,26,26,0.2) 100%);
+        }
+        .gallery-hero-content {
+            position: relative;
+            padding: var(--spacing-xl);
+            color: white;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .gallery-hero-content h1 {
+            color: white;
+            margin-bottom: var(--spacing-sm);
+        }
+        .gallery-hero-content p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.125rem;
+            max-width: 600px;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            margin-bottom: var(--spacing-md);
+            font-weight: 500;
+        }
+        .back-link:hover {
+            color: var(--color-accent);
+        }
+        .gallery-section {
+            padding: var(--spacing-xxl) 0;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+        }
+        .gallery-item {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+        }
+        .gallery-item:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-lg);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .info-section {
+            background: var(--color-white);
+            padding: var(--spacing-xxl) 0;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-xl);
+        }
+        @media (min-width: 768px) {
+            .info-grid {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+        .info-content h2 {
+            margin-bottom: var(--spacing-md);
+        }
+        .info-content p {
+            margin-bottom: var(--spacing-md);
+            line-height: 1.8;
+        }
+        .info-sidebar {
+            background: var(--color-light-gray);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            height: fit-content;
+        }
+        .info-sidebar h3 {
+            margin-bottom: var(--spacing-md);
+            font-size: 1.125rem;
+        }
+        .info-sidebar ul {
+            list-style: none;
+        }
+        .info-sidebar li {
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+        }
+        .info-sidebar li:last-child {
+            border-bottom: none;
+        }
+        .info-sidebar .label {
+            color: var(--color-gray);
+            font-size: 0.875rem;
+        }
+        .info-sidebar .value {
+            font-weight: 600;
+            color: var(--color-dark-gray);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-lg);
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: var(--radius-md);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: var(--spacing-lg);
+            right: var(--spacing-lg);
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="logo">
+                    <a href="index.html">
+                        <span class="logo-icon">🇿🇲</span>
+                        <span class="logo-text">Museum of Living Heritage</span>
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html#explore">Explore</a></li>
+                        <li><a href="index.html#regions">Regions</a></li>
+                        <li><a href="index.html#timeline">Timeline</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li class="nav-dropdown">
+                            <a href="#" class="dropdown-toggle">Get Involved</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#volunteer">Volunteer</a></li>
+                                <li><a href="#donate">Donate</a></li>
+                                <li><a href="#contribute">Contribute</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="gallery-hero">
+        <img src="images/chambeshi/main.jpg" alt="Chambeshi Monument" />
+        <div class="gallery-hero-overlay"></div>
+        <div class="gallery-hero-content">
+            <a href="index.html#explore" class="back-link">← Back to all sites</a>
+            <h1>Chambeshi Monument</h1>
+            <p>Marking the end of World War I in Africa</p>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="info-section">
+        <div class="container">
+            <div class="info-grid">
+                <div class="info-content">
+                    <h2>Historical Significance</h2>
+                    <p>The Chambeshi Monument marks one of the most significant moments in African military history. On November 14, 1918 - three days after the Armistice was signed in Europe - German General Paul von Lettow-Vorbeck surrendered his undefeated forces here at Chambeshi.</p>
+                    <p>This was the last German surrender of World War I, making Chambeshi the site where the Great War truly ended. Von Lettow-Vorbeck had led a remarkable guerrilla campaign across East Africa for four years, tying down Allied forces many times larger than his own.</p>
+                    <p>The monument stands as a testament to this historical moment and commemorates all those who served and lost their lives during the East African Campaign of World War I.</p>
+
+                    <h2>Visiting the Monument</h2>
+                    <p>The Chambeshi Monument is located near the Chambeshi River in Northern Province, accessible via the Great North Road. The site features the original memorial stone and informational plaques detailing the events of November 1918.</p>
+                </div>
+                <div class="info-sidebar">
+                    <h3>Quick Facts</h3>
+                    <ul>
+                        <li>
+                            <span class="label">Location</span>
+                            <span class="value">Northern Province</span>
+                        </li>
+                        <li>
+                            <span class="label">Category</span>
+                            <span class="value">Monument</span>
+                        </li>
+                        <li>
+                            <span class="label">Historical Date</span>
+                            <span class="value">14 Nov 1918</span>
+                        </li>
+                        <li>
+                            <span class="label">Status</span>
+                            <span class="value">National Monument</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Photo Gallery</h2>
+                <p>Explore images of the Chambeshi Monument and its surroundings</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="openLightbox('images/chambeshi/main.jpg')">
+                    <img src="images/chambeshi/main.jpg" alt="Chambeshi Monument" loading="lazy" />
+                </div>
+                <div class="gallery-item" onclick="openLightbox('images/chambeshi/20200815_142255.jpg')">
+                    <img src="images/chambeshi/20200815_142255.jpg" alt="Chambeshi Monument" loading="lazy" />
+                </div>
+                <div class="gallery-item" onclick="openLightbox('images/chambeshi/IMG-20181113-WA0009.jpg')">
+                    <img src="images/chambeshi/IMG-20181113-WA0009.jpg" alt="Chambeshi Monument" loading="lazy" />
+                </div>
+                <div class="gallery-item" onclick="openLightbox('images/chambeshi/IMG-20181113-WA0011.jpg')">
+                    <img src="images/chambeshi/IMG-20181113-WA0011.jpg" alt="Chambeshi Monument" loading="lazy" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+        <img src="" alt="Full size image" id="lightbox-img" />
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+                <p>&copy; 2024 Museum of Living Heritage. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function openLightbox(src) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>

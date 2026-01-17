@@ -90,8 +90,9 @@ const heritageSites = [
         category: "monument",
         location: "northern",
         description: "Marks the spot where German General von Lettow-Vorbeck surrendered on November 14, 1918 - three days after the WWI Armistice. The last German forces in Africa laid down arms here.",
-        image: "https://drive.google.com/uc?export=view&id=1EVexLQJF68VFgoVKEMoMHp5rsaeHgyog",
-        tag: "Monument"
+        image: "images/chambeshi/main.jpg",
+        tag: "Monument",
+        link: "chambeshi.html"
     },
     {
         id: 10,
@@ -214,6 +215,7 @@ const resultsContainer = document.getElementById('results-container');
 
 // Create a heritage site card HTML
 function createSiteCard(site) {
+    const linkHref = site.link || '#';
     return `
         <article class="history-card" data-category="${site.category}" data-location="${site.location}">
             <div class="history-card-image">
@@ -228,7 +230,7 @@ function createSiteCard(site) {
                 </div>
                 <h3>${site.title}</h3>
                 <p>${site.description}</p>
-                <a href="#" class="link-arrow">Learn more</a>
+                <a href="${linkHref}" class="link-arrow">Learn more</a>
             </div>
         </article>
     `;
