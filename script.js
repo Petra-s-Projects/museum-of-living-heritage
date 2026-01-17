@@ -22,8 +22,9 @@ const heritageSites = [
         category: "museum",
         location: "southern",
         description: "A fascinating museum showcasing Zambia's railway heritage with vintage locomotives, coaches, and memorabilia from the colonial era when railways transformed the region.",
-        image: "https://drive.google.com/uc?export=view&id=1xAtJs2daPR5EuAWc9Bkm1Tz4hH-usuK2",
-        tag: "Museum"
+        image: "images/railway-museum/main.jpg",
+        tag: "Museum",
+        link: "railway-museum.html"
     },
     {
         id: 3,
