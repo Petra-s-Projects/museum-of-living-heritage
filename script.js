@@ -51,8 +51,9 @@ const heritageSites = [
         category: "waterfall",
         location: "central",
         description: "A stunning 75-meter waterfall near Serenje, whose name means 'Crying Dove' in Bemba. The falls cascade into a crystal-clear pool surrounded by pristine miombo woodland.",
-        image: "https://drive.google.com/uc?export=view&id=1ZuZPvEb3U9INVpmHwPlua73867cLQ0GU",
-        tag: "Waterfall"
+        image: "images/kundalila-falls/main.jpg",
+        tag: "Waterfall",
+        link: "kundalila-falls.html"
     },
 
     // Historic Buildings
