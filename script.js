@@ -30,8 +30,9 @@ const heritageSites = [
         category: "museum",
         location: "western",
         description: "Located in Mongu, this museum preserves the cultural heritage of the Lozi people and the Barotseland kingdom, featuring traditional artifacts and royal regalia.",
-        image: "https://drive.google.com/uc?export=view&id=1CSlVdpvGN_s2GabJFVzEo7ptM4gRsGgX",
-        tag: "Museum"
+        image: "images/nayuma-museum/main.jpg",
+        tag: "Museum",
+        link: "nayuma-museum.html"
     },
 
     // Waterfalls
