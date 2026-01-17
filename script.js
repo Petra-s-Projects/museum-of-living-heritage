@@ -71,8 +71,9 @@ const heritageSites = [
         category: "historic-building",
         location: "lusaka",
         description: "Kenneth Kaunda's independence home where Zambia's founding father lived during the struggle for independence. Now a national monument preserving the history of Zambia's liberation movement.",
-        image: "https://drive.google.com/uc?export=view&id=1LMR8l7RkMWJZNfcTurV2cdCnnZJBtkId",
-        tag: "Historic Building"
+        image: "images/chilenje-house/main.jpg",
+        tag: "Historic Building",
+        link: "chilenje-house.html"
     },
     {
         id: 8,
