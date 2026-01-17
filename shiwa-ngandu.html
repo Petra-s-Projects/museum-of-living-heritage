@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shiwa Ng'andu House - Museum of Living Heritage</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .gallery-hero {
+            position: relative;
+            height: 50vh;
+            min-height: 400px;
+            display: flex;
+            align-items: flex-end;
+            margin-top: 72px;
+            overflow: hidden;
+        }
+        .gallery-hero img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .gallery-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(26,26,26,0.8) 0%, rgba(26,26,26,0.2) 100%);
+        }
+        .gallery-hero-content {
+            position: relative;
+            padding: var(--spacing-xl);
+            color: white;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .gallery-hero-content h1 {
+            color: white;
+            margin-bottom: var(--spacing-sm);
+        }
+        .gallery-hero-content p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.125rem;
+            max-width: 600px;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            margin-bottom: var(--spacing-md);
+            font-weight: 500;
+        }
+        .back-link:hover {
+            color: var(--color-accent);
+        }
+        .gallery-section {
+            padding: var(--spacing-xxl) 0;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+        }
+        .gallery-item {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+        }
+        .gallery-item:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-lg);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .info-section {
+            background: var(--color-white);
+            padding: var(--spacing-xxl) 0;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-xl);
+        }
+        @media (min-width: 768px) {
+            .info-grid {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+        .info-content h2 {
+            margin-bottom: var(--spacing-md);
+        }
+        .info-content p {
+            margin-bottom: var(--spacing-md);
+            line-height: 1.8;
+        }
+        .info-sidebar {
+            background: var(--color-light-gray);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            height: fit-content;
+        }
+        .info-sidebar h3 {
+            margin-bottom: var(--spacing-md);
+            font-size: 1.125rem;
+        }
+        .info-sidebar ul {
+            list-style: none;
+        }
+        .info-sidebar li {
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+        }
+        .info-sidebar li:last-child {
+            border-bottom: none;
+        }
+        .info-sidebar .label {
+            color: var(--color-gray);
+            font-size: 0.875rem;
+        }
+        .info-sidebar .value {
+            font-weight: 600;
+            color: var(--color-dark-gray);
+        }
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-lg);
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: var(--radius-md);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: var(--spacing-lg);
+            right: var(--spacing-lg);
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="logo">
+                    <a href="index.html">
+                        <span class="logo-icon">🇿🇲</span>
+                        <span class="logo-text">Museum of Living Heritage</span>
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html#explore">Explore</a></li>
+                        <li><a href="index.html#regions">Regions</a></li>
+                        <li><a href="index.html#timeline">Timeline</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li class="nav-dropdown">
+                            <a href="#" class="dropdown-toggle">Get Involved</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#volunteer">Volunteer</a></li>
+                                <li><a href="#donate">Donate</a></li>
+                                <li><a href="#contribute">Contribute</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="gallery-hero">
+        <img src="images/shiwa-ngandu/main.jpg" alt="Shiwa Ng'andu House" />
+        <div class="gallery-hero-overlay"></div>
+        <div class="gallery-hero-content">
+            <a href="index.html#explore" class="back-link">← Back to all sites</a>
+            <h1>Shiwa Ng'andu House</h1>
+            <p>An English manor in the African bush</p>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <div class="container">
+            <div class="info-grid">
+                <div class="info-content">
+                    <h2>Africa's Unlikely Manor House</h2>
+                    <p>Shiwa Ng'andu is one of Africa's most extraordinary historic buildings - a grand English-style manor house built in the remote bush of northern Zambia in the 1920s. Created by Sir Stewart Gore-Browne, a British army officer who fell in love with this corner of Africa, the estate represents an ambitious and romantic vision of blending European elegance with African wilderness.</p>
+                    <p>The manor house features classic English architectural elements including a chapel, library, and extensive gardens, all constructed using local materials and labor. Gore-Browne employed and trained hundreds of local workers, establishing schools and a hospital on the estate. His progressive approach to race relations was unusual for the colonial era, and he later became a strong advocate for Zambian independence.</p>
+                    <p>The estate also boasts natural hot springs, which Gore-Browne channeled to create heated swimming pools and baths - an incredible luxury in this remote location. The name "Shiwa Ng'andu" means "Lake of the Royal Crocodile" in the local Bemba language, referring to the nearby lake.</p>
+
+                    <h2>Visiting the Estate</h2>
+                    <p>Shiwa Ng'andu is located in Muchinga Province, about 100 kilometers from Mpika. The estate remains in the Gore-Browne family and welcomes visitors who can stay in the guesthouse, tour the manor, explore the grounds, and enjoy the hot springs. The journey to Shiwa is an adventure in itself, passing through pristine miombo woodland.</p>
+                </div>
+                <div class="info-sidebar">
+                    <h3>Quick Facts</h3>
+                    <ul>
+                        <li>
+                            <span class="label">Location</span>
+                            <span class="value">Muchinga Province</span>
+                        </li>
+                        <li>
+                            <span class="label">Category</span>
+                            <span class="value">Historic Building</span>
+                        </li>
+                        <li>
+                            <span class="label">Built</span>
+                            <span class="value">1920s</span>
+                        </li>
+                        <li>
+                            <span class="label">Status</span>
+                            <span class="value">Heritage Site</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Photo Gallery</h2>
+                <p>Explore images of Shiwa Ng'andu House</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="openLightbox('images/shiwa-ngandu/main.jpg')">
+                    <img src="images/shiwa-ngandu/main.jpg" alt="Shiwa Ng'andu House" loading="lazy" />
+                </div>
+                <div class="gallery-item" onclick="openLightbox('images/shiwa-ngandu/20170701_162103.jpg')">
+                    <img src="images/shiwa-ngandu/20170701_162103.jpg" alt="Shiwa Ng'andu House" loading="lazy" />
+                </div>
+                <div class="gallery-item" onclick="openLightbox('images/shiwa-ngandu/20181113_150720.jpg')">
+                    <img src="images/shiwa-ngandu/20181113_150720.jpg" alt="Shiwa Ng'andu House" loading="lazy" />
+                </div>
+                <div class="gallery-item" onclick="openLightbox('images/shiwa-ngandu/20181113_162703.jpg')">
+                    <img src="images/shiwa-ngandu/20181113_162703.jpg" alt="Shiwa Ng'andu House" loading="lazy" />
+                </div>
+                <div class="gallery-item" onclick="openLightbox('images/shiwa-ngandu/20181113_164413.jpg')">
+                    <img src="images/shiwa-ngandu/20181113_164413.jpg" alt="Shiwa Ng'andu House" loading="lazy" />
+                </div>
+                <div class="gallery-item" onclick="openLightbox('images/shiwa-ngandu/20181114_183521.jpg')">
+                    <img src="images/shiwa-ngandu/20181114_183521.jpg" alt="Shiwa Ng'andu House" loading="lazy" />
+                </div>
+                <div class="gallery-item" onclick="openLightbox('images/shiwa-ngandu/20181114_192952.jpg')">
+                    <img src="images/shiwa-ngandu/20181114_192952.jpg" alt="Shiwa Ng'andu House" loading="lazy" />
+                </div>
+                <div class="gallery-item" onclick="openLightbox('images/shiwa-ngandu/20181114_195834.jpg')">
+                    <img src="images/shiwa-ngandu/20181114_195834.jpg" alt="Shiwa Ng'andu House" loading="lazy" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+        <img src="" alt="Full size image" id="lightbox-img" />
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+                <p>&copy; 2024 Museum of Living Heritage. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function openLightbox(src) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) closeLightbox();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>

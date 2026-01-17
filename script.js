@@ -63,8 +63,9 @@ const heritageSites = [
         category: "historic-building",
         location: "muchinga",
         description: "A grand English-style manor house built in the 1920s by Stewart Gore-Browne in the remote bush. Features a chapel, extensive grounds, and hot springs - a remarkable piece of colonial history.",
-        image: "https://drive.google.com/uc?export=view&id=1EDhIZZ03NUnGaNao8NKH_TKMxQ4GVuWO",
-        tag: "Historic Building"
+        image: "images/shiwa-ngandu/main.jpg",
+        tag: "Historic Building",
+        link: "shiwa-ngandu.html"
     },
     {
         id: 7,
