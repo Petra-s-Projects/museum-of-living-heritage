@@ -144,8 +144,9 @@ const heritageSites = [
         category: "rock-art",
         location: "eastern",
         description: "A remarkable collection of prehistoric rock paintings in Eastern Province, showcasing the artistic traditions of ancient hunter-gatherer communities.",
-        image: "https://drive.google.com/uc?export=view&id=1U_V3CMw7dn0A_XqfiNoNPr5xz35A-Ei2",
-        tag: "Rock Art"
+        image: "images/katolola-rock-art/main.jpg",
+        tag: "Rock Art",
+        link: "katolola-rock-art.html"
     },
 
     // Archaeological Sites
