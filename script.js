@@ -41,8 +41,9 @@ const heritageSites = [
         category: "waterfall",
         location: "northern",
         description: "A sacred series of three waterfalls on the Luombe River near Kasama. The falls hold spiritual significance for local communities and feature a natural power station built in colonial times.",
-        image: "https://drive.google.com/uc?export=view&id=1KHqIbTG99arc1yHyXjP9nfORveAZ4sEX",
-        tag: "Waterfall"
+        image: "images/chishimba-falls/main.jpg",
+        tag: "Waterfall",
+        link: "chishimba-falls.html"
     },
     {
         id: 5,
@@ -100,8 +101,9 @@ const heritageSites = [
         category: "monument",
         location: "northwestern",
         description: "The sacred spring in Kalene Hills where the mighty Zambezi River begins its 2,574km journey to the Indian Ocean. A pilgrimage site marked by a national monument.",
-        image: "https://drive.google.com/uc?export=view&id=1tZJvnMDv1840M0wtFirI6ybt9yEYPl99",
-        tag: "Monument"
+        image: "images/zambezi-source/main.jpg",
+        tag: "Monument",
+        link: "zambezi-source.html"
     },
     {
         id: 11,
