@@ -204,38 +204,43 @@
 
                 <div class="contribute-grid">
                     <div class="contribute-form-wrapper">
-                        <form class="contribute-form" id="contribute-form">
+                        <form class="contribute-form" id="contribute-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label for="contributor-name">Your Name</label>
-                                <input type="text" id="contributor-name" placeholder="Enter your name" required />
+                                <input type="text" id="contributor-name" name="name" placeholder="Enter your name" required />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contributor-email">Your Email</label>
+                                <input type="email" id="contributor-email" name="email" placeholder="Enter your email" required />
                             </div>
 
                             <div class="form-group">
                                 <label for="story-title">Story Title</label>
-                                <input type="text" id="story-title" placeholder="Give your story a title" required />
+                                <input type="text" id="story-title" name="title" placeholder="Give your story a title" required />
                             </div>
 
                             <div class="form-group">
                                 <label for="historical-period">Historical Period</label>
-                                <select id="historical-period" required>
+                                <select id="historical-period" name="period" required>
                                     <option value="">Select a period...</option>
-                                    <option value="prehistoric">Prehistoric Times</option>
-                                    <option value="kingdoms">Era of Kingdoms (1600-1800s)</option>
-                                    <option value="colonial">Colonial Period (1890-1964)</option>
-                                    <option value="independence">Independence Movement</option>
-                                    <option value="post-independence">Post-Independence (1964-1991)</option>
-                                    <option value="modern">Modern Zambia (1991-Present)</option>
-                                    <option value="personal">Personal/Family History</option>
+                                    <option value="Prehistoric Times">Prehistoric Times</option>
+                                    <option value="Era of Kingdoms (1600-1800s)">Era of Kingdoms (1600-1800s)</option>
+                                    <option value="Colonial Period (1890-1964)">Colonial Period (1890-1964)</option>
+                                    <option value="Independence Movement">Independence Movement</option>
+                                    <option value="Post-Independence (1964-1991)">Post-Independence (1964-1991)</option>
+                                    <option value="Modern Zambia (1991-Present)">Modern Zambia (1991-Present)</option>
+                                    <option value="Personal/Family History">Personal/Family History</option>
                                 </select>
                             </div>
 
                             <div class="form-group">
                                 <label for="story-content">Your Story</label>
-                                <textarea id="story-content" rows="6" placeholder="Share your story, memory, or knowledge about Zambian history..." required></textarea>
+                                <textarea id="story-content" name="story" rows="6" placeholder="Share your story, memory, or knowledge about Zambian history..." required></textarea>
                             </div>
 
                             <div class="form-group">
-                                <label>Add Photos</label>
+                                <label for="photo-input">Add Photos</label>
                                 <div class="file-upload" id="photo-upload">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
@@ -243,7 +248,7 @@
                                         <polyline points="21 15 16 10 5 21"></polyline>
                                     </svg>
                                     <span>Click to upload photos</span>
-                                    <input type="file" id="photo-input" accept="image/*" multiple hidden />
+                                    <input type="file" id="photo-input" name="photos" accept="image/*" multiple />
                                 </div>
                             </div>
 
@@ -259,6 +264,7 @@
                                     </button>
                                     <div class="recording-status" id="recording-status"></div>
                                 </div>
+                                <input type="file" id="voice-input" name="voice_memo" accept="audio/*" hidden />
                             </div>
 
                             <button type="submit" class="btn btn-primary submit-btn">Share Your Story</button>

@@ -383,18 +383,20 @@ const photoInput = document.getElementById('photo-input');
 const recordBtn = document.getElementById('record-btn');
 const recordingStatus = document.getElementById('recording-status');
 const contributeForm = document.getElementById('contribute-form');
+const voiceInput = document.getElementById('voice-input');
 
-// Photo upload
+// Photo upload - make the styled div trigger the hidden input
 if (photoUpload && photoInput) {
-    photoUpload.addEventListener('click', () => {
-        photoInput.click();
+    photoUpload.addEventListener('click', (e) => {
+        if (e.target !== photoInput) {
+            photoInput.click();
+        }
     });
 
     photoInput.addEventListener('change', (e) => {
         const files = e.target.files;
         if (files.length > 0) {
-            const fileNames = Array.from(files).map(f => f.name).join(', ');
-            photoUpload.querySelector('span').textContent = `${files.length} photo(s) selected: ${fileNames}`;
+            photoUpload.querySelector('span').textContent = `${files.length} photo(s) selected`;
             photoUpload.style.borderColor = '#7D9B76';
             photoUpload.style.background = '#EBF2E9';
         }
@@ -405,6 +407,7 @@ if (photoUpload && photoInput) {
 let mediaRecorder;
 let audioChunks = [];
 let isRecording = false;
+let recordedBlob = null;
 
 if (recordBtn) {
     recordBtn.addEventListener('click', async () => {
@@ -419,8 +422,17 @@ if (recordBtn) {
                 };
 
                 mediaRecorder.onstop = () => {
-                    const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
-                    recordingStatus.textContent = 'Voice memo recorded!';
+                    recordedBlob = new Blob(audioChunks, { type: 'audio/webm' });
+
+                    // Create a File from the Blob and set it to the hidden input
+                    const file = new File([recordedBlob], 'voice-memo.webm', { type: 'audio/webm' });
+                    const dataTransfer = new DataTransfer();
+                    dataTransfer.items.add(file);
+                    if (voiceInput) {
+                        voiceInput.files = dataTransfer.files;
+                    }
+
+                    recordingStatus.textContent = 'Voice memo recorded and ready to submit!';
                     recordingStatus.style.color = '#7D9B76';
                     stream.getTracks().forEach(track => track.stop());
                 };
@@ -438,28 +450,23 @@ if (recordBtn) {
             mediaRecorder.stop();
             isRecording = false;
             recordBtn.classList.remove('recording');
-            recordBtn.querySelector('span').textContent = 'Start Recording';
+            recordBtn.querySelector('span').textContent = 'Record Again';
         }
     });
 }
 
-// Form submission
-if (contributeForm) {
-    contributeForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const name = document.getElementById('contributor-name').value;
-        const title = document.getElementById('story-title').value;
-        alert(`Thank you ${name}! Your story "${title}" has been submitted for review. We appreciate your contribution to preserving Zambian heritage.`);
-        contributeForm.reset();
-        if (photoUpload) {
-            photoUpload.querySelector('span').textContent = 'Click to upload photos';
-            photoUpload.style.borderColor = '';
-            photoUpload.style.background = '';
-        }
-        if (recordingStatus) {
-            recordingStatus.textContent = '';
-        }
-    });
+// Style the file input inside the upload div
+if (photoInput) {
+    photoInput.style.position = 'absolute';
+    photoInput.style.opacity = '0';
+    photoInput.style.width = '100%';
+    photoInput.style.height = '100%';
+    photoInput.style.top = '0';
+    photoInput.style.left = '0';
+    photoInput.style.cursor = 'pointer';
+    if (photoUpload) {
+        photoUpload.style.position = 'relative';
+    }
 }
 
 console.log('Museum of Living Heritage loaded successfully!');
