@@ -377,5 +377,90 @@ if (newsletterForm) {
     });
 }
 
+// Contribute form functionality
+const photoUpload = document.getElementById('photo-upload');
+const photoInput = document.getElementById('photo-input');
+const recordBtn = document.getElementById('record-btn');
+const recordingStatus = document.getElementById('recording-status');
+const contributeForm = document.getElementById('contribute-form');
+
+// Photo upload
+if (photoUpload && photoInput) {
+    photoUpload.addEventListener('click', () => {
+        photoInput.click();
+    });
+
+    photoInput.addEventListener('change', (e) => {
+        const files = e.target.files;
+        if (files.length > 0) {
+            const fileNames = Array.from(files).map(f => f.name).join(', ');
+            photoUpload.querySelector('span').textContent = `${files.length} photo(s) selected: ${fileNames}`;
+            photoUpload.style.borderColor = '#7D9B76';
+            photoUpload.style.background = '#EBF2E9';
+        }
+    });
+}
+
+// Voice recording
+let mediaRecorder;
+let audioChunks = [];
+let isRecording = false;
+
+if (recordBtn) {
+    recordBtn.addEventListener('click', async () => {
+        if (!isRecording) {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                mediaRecorder = new MediaRecorder(stream);
+                audioChunks = [];
+
+                mediaRecorder.ondataavailable = (e) => {
+                    audioChunks.push(e.data);
+                };
+
+                mediaRecorder.onstop = () => {
+                    const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+                    recordingStatus.textContent = 'Voice memo recorded!';
+                    recordingStatus.style.color = '#7D9B76';
+                    stream.getTracks().forEach(track => track.stop());
+                };
+
+                mediaRecorder.start();
+                isRecording = true;
+                recordBtn.classList.add('recording');
+                recordBtn.querySelector('span').textContent = 'Stop Recording';
+                recordingStatus.textContent = 'Recording...';
+                recordingStatus.style.color = '#dc3545';
+            } catch (err) {
+                alert('Could not access microphone. Please allow microphone access to record voice memos.');
+            }
+        } else {
+            mediaRecorder.stop();
+            isRecording = false;
+            recordBtn.classList.remove('recording');
+            recordBtn.querySelector('span').textContent = 'Start Recording';
+        }
+    });
+}
+
+// Form submission
+if (contributeForm) {
+    contributeForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('contributor-name').value;
+        const title = document.getElementById('story-title').value;
+        alert(`Thank you ${name}! Your story "${title}" has been submitted for review. We appreciate your contribution to preserving Zambian heritage.`);
+        contributeForm.reset();
+        if (photoUpload) {
+            photoUpload.querySelector('span').textContent = 'Click to upload photos';
+            photoUpload.style.borderColor = '';
+            photoUpload.style.background = '';
+        }
+        if (recordingStatus) {
+            recordingStatus.textContent = '';
+        }
+    });
+}
+
 console.log('Museum of Living Heritage loaded successfully!');
 console.log(`Loaded ${heritageSites.length} real Zambian heritage sites.`);
