@@ -5,14 +5,14 @@
 
 /* CSS Custom Properties */
 :root {
-    /* Primary Colors - Earthy brown tones */
-    --color-primary: #6B4423;
-    --color-primary-dark: #4A2F18;
-    --color-primary-light: #8B5A2B;
+    /* Primary Colors - Warm earthy tones with purple accent */
+    --color-primary: #8B5A2B;
+    --color-primary-dark: #5D3A1A;
+    --color-primary-light: #A67C52;
 
     /* Accent Colors */
-    --color-accent: #C17F59;
-    --color-accent-light: #D4A484;
+    --color-accent: #9B6B9E;
+    --color-accent-light: #C9A7CB;
 
     /* Neutrals */
     --color-black: #1A1A1A;
@@ -21,7 +21,7 @@
     --color-medium-gray: #9A9A9A;
     --color-white: #FFFFFF;
 
-    /* Colorful earthy palette */
+    /* Vibrant colorful palette */
     --color-terracotta: #E07B54;
     --color-terracotta-light: #FCEEE8;
     --color-sage: #7D9B76;
@@ -32,6 +32,24 @@
     --color-clay-light: #F9EDE8;
     --color-sand: #E8DBC4;
     --color-warm-cream: #FFF8F0;
+
+    /* Purple palette */
+    --color-violet: #7B4B94;
+    --color-violet-light: #F3EBF6;
+    --color-plum: #8E4585;
+    --color-plum-light: #F8EDF7;
+    --color-lavender: #9D8EC7;
+    --color-lavender-light: #F0EDF8;
+    --color-amethyst: #6B5B95;
+    --color-amethyst-light: #EDEAF3;
+
+    /* Additional vibrant colors */
+    --color-coral: #FF6F61;
+    --color-coral-light: #FFECE9;
+    --color-teal: #45B7AA;
+    --color-teal-light: #E5F6F4;
+    --color-gold: #FFB347;
+    --color-gold-light: #FFF5E6;
 
     /* Typography */
     --font-heading: 'Playfair Display', Georgia, serif;
@@ -518,6 +536,145 @@ section {
 }
 
 /* ========================================
+   Topics Carousel Section
+   ======================================== */
+.topics-section {
+    background: var(--color-gold-light);
+    padding: var(--spacing-xxl) 0;
+}
+
+.topics-carousel-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.topics-carousel {
+    display: flex;
+    gap: var(--spacing-lg);
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: var(--spacing-sm) 0;
+    scroll-snap-type: x mandatory;
+}
+
+.topics-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.topic-card {
+    flex: 0 0 320px;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-normal);
+    scroll-snap-align: start;
+}
+
+.topic-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+}
+
+.topic-card-image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.topic-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.topic-card:hover .topic-card-image img {
+    transform: scale(1.08);
+}
+
+.topic-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(93, 71, 119, 0.3) 100%
+    );
+}
+
+.topic-card-content {
+    padding: var(--spacing-md);
+}
+
+.topic-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--color-violet), var(--color-plum));
+    color: var(--color-white);
+    padding: 0.25rem 0.75rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: var(--radius-sm);
+    margin-bottom: 0.75rem;
+}
+
+.topic-card-content h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-black);
+}
+
+.topic-card-content p {
+    font-size: 0.9375rem;
+    color: var(--color-gray);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Carousel Navigation Buttons */
+.carousel-btn {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--color-white);
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+    box-shadow: var(--shadow-sm);
+}
+
+.carousel-btn:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+    transform: scale(1.1);
+}
+
+.carousel-btn:active {
+    transform: scale(0.95);
+}
+
+@media (max-width: 767px) {
+    .carousel-btn {
+        display: none;
+    }
+
+    .topic-card {
+        flex: 0 0 280px;
+    }
+}
+
+/* ========================================
    Explorer Section with Filters
    ======================================== */
 .explorer-section {
@@ -777,7 +934,7 @@ section {
    Contribute Section
    ======================================== */
 .contribute-section {
-    background: var(--color-terracotta-light);
+    background: var(--color-coral-light);
 }
 
 .contribute-grid {
@@ -812,6 +969,7 @@ section {
 }
 
 .contribute-form input[type="text"],
+.contribute-form input[type="email"],
 .contribute-form select,
 .contribute-form textarea {
     width: 100%;
@@ -829,7 +987,7 @@ section {
 .contribute-form select:focus,
 .contribute-form textarea:focus {
     outline: none;
-    border-color: var(--color-terracotta);
+    border-color: var(--color-coral);
 }
 
 .contribute-form textarea {
@@ -848,8 +1006,8 @@ section {
 }
 
 .file-upload:hover {
-    border-color: var(--color-terracotta);
-    background: var(--color-terracotta-light);
+    border-color: var(--color-coral);
+    background: var(--color-coral-light);
 }
 
 .file-upload svg {
@@ -872,7 +1030,7 @@ section {
     align-items: center;
     gap: 0.5rem;
     padding: 0.875rem 1.5rem;
-    background: var(--color-terracotta);
+    background: var(--color-coral);
     color: var(--color-white);
     border: none;
     border-radius: var(--radius-md);
@@ -1007,7 +1165,7 @@ section {
 .has-audio,
 .has-photos {
     font-size: 0.75rem;
-    color: var(--color-terracotta);
+    color: var(--color-coral);
     font-weight: 500;
 }
 
@@ -1015,7 +1173,7 @@ section {
    About Section
    ======================================== */
 .about-section {
-    background: var(--color-clay-light);
+    background: var(--color-teal-light);
 }
 
 .about-grid {
@@ -1052,7 +1210,7 @@ section {
    Newsletter Section
    ======================================== */
 .newsletter-section {
-    background: linear-gradient(135deg, var(--color-sage) 0%, var(--color-primary) 100%);
+    background: linear-gradient(135deg, var(--color-sage) 0%, var(--color-teal) 100%);
     color: var(--color-white);
 }
 

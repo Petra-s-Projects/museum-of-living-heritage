@@ -90,6 +90,16 @@ const heritageSites = [
         tag: "Historic Building",
         link: "njanji-commuter-building.html"
     },
+    {
+        id: 19,
+        title: "Cairo Road Heritage Walk",
+        category: "historic-building",
+        location: "lusaka",
+        description: "A 1.8km timeline of Zambian ambition — from the oldest surviving building in the capital to the tallest. Yugoslav brutalist towers, the sealed colour bar window, and the copper boom's monuments line this working commercial artery.",
+        image: "images/cairo-road/main.jpg",
+        tag: "Heritage Walk",
+        link: "cairo-road.html"
+    },
 
     // Monuments
     {
@@ -467,6 +477,31 @@ if (photoInput) {
     if (photoUpload) {
         photoUpload.style.position = 'relative';
     }
+}
+
+// Topics Carousel Navigation
+const topicsCarousel = document.querySelector('.topics-carousel');
+const prevBtn = document.querySelector('.carousel-prev');
+const nextBtn = document.querySelector('.carousel-next');
+
+if (topicsCarousel && prevBtn && nextBtn) {
+    const scrollAmount = 340; // Card width + gap
+
+    prevBtn.addEventListener('click', () => {
+        topicsCarousel.scrollBy({
+            left: -scrollAmount,
+            behavior: 'smooth'
+        });
+    });
+
+    nextBtn.addEventListener('click', () => {
+        topicsCarousel.scrollBy({
+            left: scrollAmount,
+            behavior: 'smooth'
+        });
+    });
+
+    // Touch/swipe support is built-in via CSS scroll-snap
 }
 
 console.log('Museum of Living Heritage loaded successfully!');

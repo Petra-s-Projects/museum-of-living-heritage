@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cairo Road Heritage Walk - Museum of Living Heritage</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .gallery-hero {
+            position: relative;
+            height: 50vh;
+            min-height: 400px;
+            display: flex;
+            align-items: flex-end;
+            margin-top: 72px;
+            overflow: hidden;
+        }
+        .gallery-hero img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .gallery-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(26,26,26,0.8) 0%, rgba(26,26,26,0.2) 100%);
+        }
+        .gallery-hero-content {
+            position: relative;
+            padding: var(--spacing-xl);
+            color: white;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .gallery-hero-content h1 {
+            color: white;
+            margin-bottom: var(--spacing-sm);
+        }
+        .gallery-hero-content p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.125rem;
+            max-width: 600px;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            margin-bottom: var(--spacing-md);
+            font-weight: 500;
+        }
+        .back-link:hover {
+            color: var(--color-accent);
+        }
+        .gallery-section {
+            padding: var(--spacing-xxl) 0;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+        }
+        .gallery-item {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+        }
+        .gallery-item:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-lg);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .info-section {
+            background: var(--color-white);
+            padding: var(--spacing-xxl) 0;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-xl);
+        }
+        @media (min-width: 768px) {
+            .info-grid {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+        .info-content h2 {
+            margin-bottom: var(--spacing-md);
+        }
+        .info-content p {
+            margin-bottom: var(--spacing-md);
+            line-height: 1.8;
+        }
+        .info-sidebar {
+            background: var(--color-sand);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            height: fit-content;
+        }
+        .info-sidebar h3 {
+            margin-bottom: var(--spacing-md);
+            font-size: 1.125rem;
+        }
+        .info-sidebar ul {
+            list-style: none;
+        }
+        .info-sidebar li {
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+        }
+        .info-sidebar li:last-child {
+            border-bottom: none;
+        }
+        .info-sidebar .label {
+            color: var(--color-gray);
+            font-size: 0.875rem;
+        }
+        .info-sidebar .value {
+            font-weight: 600;
+            color: var(--color-dark-gray);
+        }
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-lg);
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: var(--radius-md);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: var(--spacing-lg);
+            right: var(--spacing-lg);
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="logo">
+                    <a href="index.html">
+                        <svg class="logo-icon" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="6" r="4" fill="#C65D3B"/><path d="M20 10 L20 22 M20 14 Q12 8 8 4 M20 14 Q28 8 32 4" stroke="#C65D3B" stroke-width="3" stroke-linecap="round"/><path d="M20 22 L15 32 M20 22 L25 32" stroke="#C65D3B" stroke-width="3" stroke-linecap="round"/><ellipse cx="32" cy="28" rx="6" ry="4" fill="#D4846A"/><path d="M28 28 L26 34 M31 28 L30 34 M34 28 L35 34 M36 28 L38 34" stroke="#D4846A" stroke-width="1.5" stroke-linecap="round"/><path d="M38 26 Q40 22 38 20" stroke="#D4846A" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        <span class="logo-text">Museum of Living Heritage</span>
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html#explore">Explore</a></li>
+                        <li><a href="index.html#regions">Regions</a></li>
+                        <li><a href="index.html#timeline">Timeline</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li class="nav-dropdown">
+                            <a href="#" class="dropdown-toggle">Get Involved</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#volunteer">Volunteer</a></li>
+                                <li><a href="#donate">Donate</a></li>
+                                <li><a href="#contribute">Contribute</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="gallery-hero">
+        <img src="images/cairo-road/main.jpg" alt="Cairo Road Heritage Walk" />
+        <div class="gallery-hero-overlay"></div>
+        <div class="gallery-hero-content">
+            <a href="index.html#explore" class="back-link">← Back to all sites</a>
+            <h1>Cairo Road Heritage Walk</h1>
+            <p>An open-air archive of everything Zambia has been</p>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <div class="container">
+            <div class="info-grid">
+                <div class="info-content">
+                    <blockquote style="font-size: 1.25rem; font-style: italic; color: var(--color-terracotta); border-left: 4px solid var(--color-terracotta); padding-left: var(--spacing-md); margin: 0 0 var(--spacing-lg) 0;">
+                        The name is a colonial relic — Cecil Rhodes' fantasy of a Cape-to-Cairo corridor through British Africa. But walk Cairo Road today and you encounter something more complex: a 1.8-kilometre timeline of Zambian ambition, from the oldest surviving building in the capital to the tallest. Here stands Lusaka's only surviving evidence of the colonial colour bar — a sealed window where Black Africans once bought railway tickets from outside while whites walked in.
+                    </blockquote>
+
+                    <h2>The Story</h2>
+                    <p>Cairo Road began as a stretch of dirt in the 1930s, part of the planned new capital that Governor Hubert Young was carving from the bush. Lusaka had been chosen to replace Livingstone in 1935 — more central, better positioned at the crossroads of the Great North Road and Great East Road, with the railway running through. The street took its name from Rhodes' never-completed vision: a road and railway linking Cape Town to Cairo through unbroken British territory.</p>
+                    <p>The early buildings were modest: single-storey shops, the railway station, administrative offices funded by the Beit Trust. The <strong>Njanji Commuter Building</strong>, constructed in 1906 as a station house, predates even the formal founding of Lusaka as capital — making it the oldest surviving structure in the city. Its architecture encodes the racial hierarchy of colonial Northern Rhodesia: the main entrance for Europeans, a small external hatch for Africans.</p>
+
+                    <h2>The Yugoslav Towers</h2>
+                    <p>Independence in 1964 brought new ambitions. Kenneth Kaunda's Zambia was rich with copper revenue and politically positioned as a leader of the Non-Aligned Movement. Yugoslavia, a founding NAM member under Tito, exported modernist architecture across Africa as diplomatic soft power. Zambia became a major recipient.</p>
+                    <p>Between 1970 and 1979, Yugoslav architects designed at least three major buildings in Lusaka: the <strong>Mulungushi International Conference Centre</strong> (built in 107 days for the 1970 NAM Summit), <strong>ZANACO House</strong> (headquarters of the national bank), and most dramatically, <strong>Findeco House</strong> — the 23-storey tower that remains Zambia's tallest building.</p>
+                    <p>Designed by <strong>Dušan Milenković</strong> and <strong>Branimir Ganović</strong>, Findeco's floors cantilever off a central pillar, giving it a gravity-defying appearance that symbolised the optimism of the copper boom years. That optimism didn't last. Copper prices collapsed in the late 1970s; the towers remained but maintenance faltered.</p>
+
+                    <h2>The Buildings</h2>
+                    <p><strong>Njanji Commuter Building (1906)</strong> — The oldest surviving building in Lusaka. Look for the sealed segregation window — a rectangular outline in the brickwork where Black Africans bought tickets from outside. The colour bar made visible in brick and mortar.</p>
+                    <p><strong>Findeco House (1977–1979)</strong> — Zambia's tallest building at 90 metres / 23 floors. Yugoslav brutalist design with floors cantilevered off a central pillar. The gold-toned façade, though weathered, remains striking. A Samsung sign crowns the rooftop.</p>
+                    <p><strong>ZANACO House (1970s)</strong> — The white tower beside Findeco. Yugoslav-designed headquarters for Zambia National Commercial Bank. Clean white façade contrasts with Findeco's brutalist drama.</p>
+                    <p><strong>Society House / Hilton Garden Inn (1970s; rebuilt 2017)</strong> — A phoenix from the ashes. Gutted by fire in the late 1990s and derelict for nearly two decades, a $100 million redevelopment brought it back as Zambia's first Hilton property, clad in copper-toned panels.</p>
+                    <p><strong>Indeco House (1970s)</strong> — One of the "big four" towers. Built for the Industrial Development Corporation during the nationalisation era.</p>
+
+                    <h2>The Walk</h2>
+                    <p><strong>Suggested route: South to North (1.8 km, 90–120 minutes)</strong></p>
+                    <p>Begin at <strong>Heroes Square</strong> at the southern end where the Njanji Commuter Building faces the railway station. Examine the sealed segregation window. Note the Freedom Statue nearby.</p>
+                    <p>Walk north along Cairo Road's eastern pavement. The street is divided by a tree-lined median — jacarandas and flamboyants that soften the concrete. Pass the <strong>Central Post Office</strong> and various mid-century commercial buildings.</p>
+                    <p>Approaching the <strong>Kafue Roundabout</strong>, the Yugoslav twins dominate the view: ZANACO House (white) to the left, Findeco House (gold) to the right. Stand at the roundabout to appreciate Findeco's cantilevered floors.</p>
+                    <p>Continue to <strong>Society House / Hilton Garden Inn</strong> — the copper-clad resurrection. End at the <strong>Kabwe Roundabout</strong> at the northern terminus.</p>
+
+                    <h2>Historical Significance</h2>
+                    <p><strong>Colonial Foundation:</strong> Cairo Road is the physical spine of colonial Lusaka — laid out in the 1930s, named for Rhodes' imperial fantasy. The Njanji Building's segregation window is tangible evidence of the colour bar.</p>
+                    <p><strong>Non-Aligned Architecture:</strong> The Yugoslav-designed buildings represent a significant chapter in African architectural history. Yugoslavia's export of modernist design to NAM member states created a distinctive architectural language across the continent.</p>
+                    <p><strong>Copper Boom and Bust:</strong> The 1970s towers embody the optimism of Zambia's first decade. The subsequent decades of decay — Findeco's dark stairwells, Society House's burnt shell — tell the story of economic collapse. Recent redevelopments suggest cautious recovery.</p>
+
+                    <h2>Tips</h2>
+                    <ul style="margin-bottom: var(--spacing-md);">
+                        <li><strong>Walk in the morning</strong> — Cooler and less congested</li>
+                        <li><strong>Bring water</strong> — No facilities en route</li>
+                        <li><strong>Keep valuables secure</strong> — This is a busy commercial area</li>
+                        <li><strong>Photography is permitted</strong> — But be respectful of people</li>
+                        <li><strong>Look up</strong> — The architectural details reward attention</li>
+                        <li><strong>Allow 90–120 minutes</strong> — Don't rush the heritage</li>
+                    </ul>
+
+                    <h2>Suggested Itineraries</h2>
+                    <p><strong>Lusaka Independence Walk (half day):</strong> Cairo Road cluster → Freedom Statue → National Assembly → Chilenje House 394</p>
+                    <p><strong>Yugoslav Architecture Trail (half day):</strong> Cairo Road (Findeco + ZANACO) → Mulungushi International Conference Centre → University Teaching Hospital (exterior)</p>
+                    <p><strong>Lusaka Heritage Day (full day):</strong> Morning: Cairo Road cluster → Afternoon: Lusaka National Museum → Chilenje House 394 → Evening: Dinner at Hilton Garden Inn</p>
+                </div>
+                <div class="info-sidebar">
+                    <h3>Quick Facts</h3>
+                    <ul>
+                        <li>
+                            <span class="label">Location</span>
+                            <span class="value">CBD, Lusaka</span>
+                        </li>
+                        <li>
+                            <span class="label">Type</span>
+                            <span class="value">Heritage Walk</span>
+                        </li>
+                        <li>
+                            <span class="label">Length</span>
+                            <span class="value">1.8 km</span>
+                        </li>
+                        <li>
+                            <span class="label">Duration</span>
+                            <span class="value">90–120 minutes</span>
+                        </li>
+                        <li>
+                            <span class="label">Difficulty</span>
+                            <span class="value">Easy (flat, paved)</span>
+                        </li>
+                        <li>
+                            <span class="label">Sites Included</span>
+                            <span class="value">6+ buildings</span>
+                        </li>
+                    </ul>
+
+                    <h3 style="margin-top: var(--spacing-lg);">Key Buildings</h3>
+                    <ul>
+                        <li>
+                            <span class="label">Njanji Building</span>
+                            <span class="value">1906 (oldest)</span>
+                        </li>
+                        <li>
+                            <span class="label">Findeco House</span>
+                            <span class="value">1977–79 (tallest)</span>
+                        </li>
+                        <li>
+                            <span class="label">ZANACO House</span>
+                            <span class="value">1970s</span>
+                        </li>
+                        <li>
+                            <span class="label">Society House</span>
+                            <span class="value">1970s / 2017</span>
+                        </li>
+                        <li>
+                            <span class="label">Indeco House</span>
+                            <span class="value">1970s</span>
+                        </li>
+                    </ul>
+
+                    <h3 style="margin-top: var(--spacing-lg);">Findeco House</h3>
+                    <ul>
+                        <li>
+                            <span class="label">Height</span>
+                            <span class="value">90m / 23 floors</span>
+                        </li>
+                        <li>
+                            <span class="label">Architects</span>
+                            <span class="value">Milenković & Ganović</span>
+                        </li>
+                        <li>
+                            <span class="label">Style</span>
+                            <span class="value">Yugoslav Brutalist</span>
+                        </li>
+                        <li>
+                            <span class="label">Status</span>
+                            <span class="value">Zambia's tallest</span>
+                        </li>
+                    </ul>
+
+                    <h3 style="margin-top: var(--spacing-lg);">Colour Bar Window</h3>
+                    <ul>
+                        <li>
+                            <span class="label">Building</span>
+                            <span class="value">Njanji (1906)</span>
+                        </li>
+                        <li>
+                            <span class="label">Feature</span>
+                            <span class="value">Sealed hatch</span>
+                        </li>
+                        <li>
+                            <span class="label">Significance</span>
+                            <span class="value">Only surviving evidence</span>
+                        </li>
+                    </ul>
+
+                    <h3 style="margin-top: var(--spacing-lg);">Visitor Info</h3>
+                    <ul>
+                        <li>
+                            <span class="label">Best Time</span>
+                            <span class="value">Weekday morning</span>
+                        </li>
+                        <li>
+                            <span class="label">Entry Fee</span>
+                            <span class="value">Free (public)</span>
+                        </li>
+                        <li>
+                            <span class="label">Facilities</span>
+                            <span class="value">Cafés nearby</span>
+                        </li>
+                        <li>
+                            <span class="label">Safety</span>
+                            <span class="value">Urban precautions</span>
+                        </li>
+                    </ul>
+
+                    <h3 style="margin-top: var(--spacing-lg);">Nearby Sites</h3>
+                    <ul>
+                        <li>
+                            <span class="label">Freedom Statue</span>
+                            <span class="value">Adjacent</span>
+                        </li>
+                        <li>
+                            <span class="label">Railway Station</span>
+                            <span class="value">Adjacent</span>
+                        </li>
+                        <li>
+                            <span class="label">Mulungushi Centre</span>
+                            <span class="value">5 km</span>
+                        </li>
+                        <li>
+                            <span class="label">Chilenje House 394</span>
+                            <span class="value">6 km</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Photo Gallery</h2>
+                <p>Historic images of Cairo Road</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="openLightbox('images/cairo-road/main.jpg')">
+                    <img src="images/cairo-road/main.jpg" alt="Cairo Road Century Building (1960s)" loading="lazy" />
+                </div>
+                <div class="gallery-item" onclick="openLightbox('images/cairo-road/Cairo Road (1958).jpg')">
+                    <img src="images/cairo-road/Cairo Road (1958).jpg" alt="Cairo Road (1958)" loading="lazy" />
+                </div>
+                <div class="gallery-item" onclick="openLightbox('images/cairo-road/Cairo Road (1960).jpg')">
+                    <img src="images/cairo-road/Cairo Road (1960).jpg" alt="Cairo Road (1960)" loading="lazy" />
+                </div>
+                <div class="gallery-item" onclick="openLightbox('images/cairo-road/Cairo Road Chemist (1950s_).jpg')">
+                    <img src="images/cairo-road/Cairo Road Chemist (1950s_).jpg" alt="Cairo Road Chemist (1950s)" loading="lazy" />
+                </div>
+                <div class="gallery-item" onclick="openLightbox('images/cairo-road/Lusaka architecture article (1964).jpg')">
+                    <img src="images/cairo-road/Lusaka architecture article (1964).jpg" alt="Lusaka architecture article (1964)" loading="lazy" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+        <img src="" alt="Full size image" id="lightbox-img" />
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+                <p>&copy; 2024 Museum of Living Heritage. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function openLightbox(src) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) closeLightbox();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
