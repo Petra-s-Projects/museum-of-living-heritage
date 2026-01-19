@@ -14,14 +14,16 @@
     --color-accent: #C17F59;
     --color-accent-light: #D4A484;
 
-    /* Neutrals - Softer, warmer palette */
+    /* Neutrals - Warm, earthy palette */
     --color-black: #1A1A1A;
     --color-dark-gray: #3D3D3D;
     --color-gray: #6B6B6B;
     --color-medium-gray: #9A9A9A;
-    --color-light-gray: #F5F4F2;
-    --color-off-white: #FAFAF9;
+    --color-light-gray: #F5EDE4;
+    --color-off-white: #FDF6ED;
     --color-white: #FFFFFF;
+    --color-sand: #E8DFD4;
+    --color-warm-cream: #FFF8F0;
 
     /* Typography */
     --font-heading: 'Playfair Display', Georgia, serif;
@@ -504,7 +506,7 @@ section {
    Explorer Section with Filters
    ======================================== */
 .explorer-section {
-    background-color: var(--color-off-white);
+    background-color: var(--color-sand);
 }
 
 .filter-controls {
@@ -671,7 +673,7 @@ section {
    Timeline Section
    ======================================== */
 .timeline-section {
-    background: var(--color-white);
+    background: var(--color-warm-cream);
 }
 
 .timeline {
@@ -724,10 +726,11 @@ section {
 }
 
 .timeline-content {
-    background: var(--color-off-white);
+    background: var(--color-white);
     padding: var(--spacing-md) var(--spacing-lg);
     border-radius: var(--radius-md);
     transition: all var(--transition-normal);
+    border-left: 3px solid var(--color-accent);
 }
 
 .timeline-item:hover .timeline-content {
@@ -759,7 +762,7 @@ section {
    Regions Section
    ======================================== */
 .regions-section {
-    background: var(--color-light-gray);
+    background: var(--color-sand);
 }
 
 .regions-grid {
@@ -816,7 +819,7 @@ section {
    About Section
    ======================================== */
 .about-section {
-    background: var(--color-white);
+    background: var(--color-light-gray);
 }
 
 .about-grid {
