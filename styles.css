@@ -236,10 +236,17 @@ p {
     gap: var(--spacing-lg);
 }
 
+.logo {
+    position: absolute;
+    left: var(--spacing-lg);
+    top: 50%;
+    transform: translateY(-50%);
+}
+
 .logo a {
     display: flex;
     align-items: center;
-    gap: var(--spacing-xs);
+    gap: var(--spacing-sm);
     color: var(--color-black);
 }
 
@@ -262,7 +269,7 @@ p {
 @media (min-width: 768px) {
     .main-nav {
         display: block;
-        flex: 1;
+        margin-left: auto;
     }
 }
 
