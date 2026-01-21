@@ -578,10 +578,10 @@ section {
 
 .topic-card {
     flex: 0 0 320px;
-    background: var(--color-white);
+    background: #EAEAEA;
     border-radius: var(--radius-lg);
     overflow: hidden;
-    box-shadow: var(--shadow-md);
+    box-shadow: none;
     transition: all var(--transition-normal);
     scroll-snap-align: start;
 }
@@ -976,7 +976,7 @@ section {
    Contribute Section
    ======================================== */
 .contribute-section {
-    background: var(--color-ochre-light);
+    background: #FAF8F6;
 }
 
 /* Topic Contributions */
@@ -1006,9 +1006,9 @@ section {
     align-items: flex-start;
     gap: var(--spacing-md);
     padding: var(--spacing-md);
-    background: var(--color-white);
+    background: #EAEAEA;
     border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
+    box-shadow: none;
     transition: all var(--transition-normal);
     text-decoration: none;
 }
@@ -1077,10 +1077,10 @@ section {
 }
 
 .contribute-form-wrapper {
-    background: var(--color-white);
+    background: #EAEAEA;
     padding: var(--spacing-lg);
     border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-md);
+    box-shadow: none;
 }
 
 .contribute-form .form-group {
@@ -1200,11 +1200,11 @@ section {
 }
 
 .contribution-card {
-    background: var(--color-white);
+    background: #EAEAEA;
     padding: var(--spacing-md);
     border-radius: var(--radius-md);
     margin-bottom: var(--spacing-md);
-    box-shadow: var(--shadow-sm);
+    box-shadow: none;
     transition: all var(--transition-fast);
 }
 
