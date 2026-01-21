@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <title>About the Museum - Museum of Living Heritage</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .about-hero {
+            position: relative;
+            height: 50vh;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            margin-top: 72px;
+            background: linear-gradient(135deg, #2C2420 0%, #1a1512 100%);
+        }
+
+        .about-hero-content {
+            position: relative;
+            max-width: 700px;
+            color: var(--color-white);
+            padding-left: var(--spacing-xl);
+        }
+
+        .about-hero-content h1 {
+            color: var(--color-white);
+            margin-bottom: var(--spacing-md);
+            font-size: clamp(2rem, 4vw, 3rem);
+        }
+
+        .about-hero-content p {
+            font-size: 1.125rem;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.7;
+        }
+
+        .intro-section {
+            padding: var(--spacing-xl) 0;
+            background: var(--color-white);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-primary);
+            font-weight: 500;
+            margin-bottom: var(--spacing-lg);
+            transition: color var(--transition-fast);
+        }
+
+        .back-link:hover {
+            color: var(--color-accent);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-content h2 {
+            font-size: 2rem;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-black);
+        }
+
+        .about-content p {
+            font-size: 1.125rem;
+            line-height: 1.9;
+            color: var(--color-dark-gray);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .about-content p.lead {
+            font-size: 1.25rem;
+            color: var(--color-black);
+            font-weight: 500;
+        }
+
+        .mission-section {
+            background: #F5F0EB;
+            padding: var(--spacing-xxl) 0;
+        }
+
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
+        }
+
+        .mission-card {
+            background: var(--color-white);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .mission-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-black);
+        }
+
+        .mission-card p {
+            color: var(--color-gray);
+            line-height: 1.7;
+        }
+
+        .founders-section {
+            background: var(--color-white);
+            padding: var(--spacing-xxl) 0;
+        }
+
+        .founders-intro {
+            max-width: 800px;
+            margin: 0 auto var(--spacing-xl);
+            text-align: center;
+        }
+
+        .founders-intro h2 {
+            font-size: 2rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .founders-intro p {
+            font-size: 1.125rem;
+            color: var(--color-gray);
+            line-height: 1.8;
+        }
+
+        .founders-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-xl);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .founder-card {
+            text-align: center;
+            padding: var(--spacing-lg);
+        }
+
+        .founder-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-terracotta) 0%, var(--color-rust) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-md);
+            font-size: 2.5rem;
+            color: var(--color-white);
+            font-family: var(--font-heading);
+            font-weight: 600;
+        }
+
+        .founder-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+            color: var(--color-black);
+        }
+
+        .founder-card .role {
+            color: var(--color-accent);
+            font-weight: 500;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .founder-card p {
+            color: var(--color-gray);
+            line-height: 1.7;
+        }
+
+        .vision-section {
+            background: #2C2420;
+            color: var(--color-white);
+            padding: var(--spacing-xxl) 0;
+        }
+
+        .vision-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .vision-content h2 {
+            color: var(--color-white);
+            font-size: 2rem;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .vision-content p {
+            font-size: 1.25rem;
+            line-height: 1.9;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .vision-content .btn {
+            margin-top: var(--spacing-md);
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="logo">
+                    <a href="index.html">
+                        <svg class="logo-icon" width="78" height="54" viewBox="0 0 52 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="10" cy="5" r="4" fill="#A45A3D"/>
+                            <path d="M10 9 L10 18" stroke="#A45A3D" stroke-width="3.5" stroke-linecap="round"/>
+                            <path d="M10 11 L4 6" stroke="#A45A3D" stroke-width="3.5" stroke-linecap="round"/>
+                            <path d="M10 18 L6 28 M10 18 L14 28" stroke="#A45A3D" stroke-width="3.5" stroke-linecap="round"/>
+                            <circle cx="26" cy="5" r="4" fill="#C27C5C"/>
+                            <path d="M26 9 L26 18" stroke="#C27C5C" stroke-width="3.5" stroke-linecap="round"/>
+                            <path d="M26 18 L22 28 M26 18 L30 28" stroke="#C27C5C" stroke-width="3.5" stroke-linecap="round"/>
+                            <circle cx="42" cy="5" r="4" fill="#D4A03C"/>
+                            <path d="M42 9 L42 18" stroke="#D4A03C" stroke-width="3.5" stroke-linecap="round"/>
+                            <path d="M42 11 L48 6" stroke="#D4A03C" stroke-width="3.5" stroke-linecap="round"/>
+                            <path d="M42 18 L38 28 M42 18 L46 28" stroke="#D4A03C" stroke-width="3.5" stroke-linecap="round"/>
+                            <path d="M10 11 L26 11 L42 11" stroke="#C27C5C" stroke-width="3.5" stroke-linecap="round"/>
+                        </svg>
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="heritage-sites.html">Heritage Sites</a></li>
+                        <li><a href="index.html#contribute">Contribute</a></li>
+                        <li><a href="index.html#timeline">Timeline</a></li>
+                        <li><a href="about.html" class="active">About the Museum</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <button class="search-btn" aria-label="Search">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="M21 21l-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                    <button class="mobile-menu-btn" aria-label="Menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <div class="about-hero-content container">
+            <h1>About the Museum</h1>
+            <p>Preserving and sharing Zambia's rich heritage with the world, one story at a time.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Introduction -->
+        <section class="intro-section">
+            <div class="container">
+                <a href="index.html" class="back-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                    Back to Home
+                </a>
+                <div class="about-content">
+                    <p class="lead">The Museum of Living Heritage was born from a simple yet powerful belief: that Zambia's extraordinary history belongs to everyone.</p>
+
+                    <p>For too long, the rich tapestry of Zambian heritage has remained scattered across dusty archives, fading memories, and isolated communities. Stories of ancient kingdoms, colonial resistance, independence heroes, and everyday people have risked being lost to time. We created this digital museum to change that.</p>
+
+                    <p>Our mission is to collect, preserve, and share Zambian history in a way that is accessible to all. Whether you're a student in Lusaka, a researcher in London, or a member of the diaspora reconnecting with your roots, this museum is for you. We believe that history should not be locked away in institutions but should live and breathe in the hearts of people everywhere.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission Section -->
+        <section class="mission-section">
+            <div class="container">
+                <div class="about-content">
+                    <h2>What We Do</h2>
+                    <p>We are building a living archive of Zambian heritage that grows with contributions from people like you.</p>
+                </div>
+
+                <div class="mission-grid">
+                    <div class="mission-card">
+                        <h3>Preserve</h3>
+                        <p>We document heritage sites, oral histories, photographs, and artifacts before they are lost to time, creating a permanent digital record for future generations.</p>
+                    </div>
+                    <div class="mission-card">
+                        <h3>Educate</h3>
+                        <p>We make Zambian history accessible through engaging articles, interactive timelines, and curated collections that bring the past to life.</p>
+                    </div>
+                    <div class="mission-card">
+                        <h3>Connect</h3>
+                        <p>We bring together communities, historians, and storytellers to share knowledge and ensure that diverse voices are represented in our national narrative.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Founders Section -->
+        <section class="founders-section">
+            <div class="container">
+                <div class="founders-intro">
+                    <h2>Meet the Founders</h2>
+                    <p>The Museum of Living Heritage was founded by two historians with a shared passion for making Zambian history accessible to everyone.</p>
+                </div>
+
+                <div class="founders-grid">
+                    <div class="founder-card">
+                        <div class="founder-avatar">P</div>
+                        <h3>Petra Chikasa-Blewett</h3>
+                        <p class="role">Co-Founder & Historian</p>
+                        <p>Petra is a historian specialising in Zambian cultural heritage and pre-colonial history. Her research focuses on preserving indigenous knowledge systems and documenting the stories of communities across Zambia's ten provinces.</p>
+                    </div>
+                    <div class="founder-card">
+                        <div class="founder-avatar">J</div>
+                        <h3>James Blewett</h3>
+                        <p class="role">Co-Founder & Art Historian</p>
+                        <p>James is an art historian with expertise in colonial and post-independence Zambian history. He is passionate about making historical research accessible to the public and believes in the power of storytelling to connect people with their heritage.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vision Section -->
+        <section class="vision-section">
+            <div class="container">
+                <div class="vision-content">
+                    <h2>Our Vision</h2>
+                    <p>We envision a world where every Zambian, wherever they are, can access and engage with their heritage. A world where the stories of our ancestors are not forgotten but celebrated, and where future generations inherit not just the land but the rich history that makes Zambia truly special.</p>
+                    <p>This is a museum without walls. It belongs to all of us.</p>
+                    <a href="index.html#contribute" class="btn btn-primary">Share Your Story</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <svg class="logo-icon" width="78" height="54" viewBox="0 0 52 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="10" cy="5" r="4" fill="#A45A3D"/>
+                            <path d="M10 9 L10 18" stroke="#A45A3D" stroke-width="3.5" stroke-linecap="round"/>
+                            <path d="M10 11 L4 6" stroke="#A45A3D" stroke-width="3.5" stroke-linecap="round"/>
+                            <path d="M10 18 L6 28 M10 18 L14 28" stroke="#A45A3D" stroke-width="3.5" stroke-linecap="round"/>
+                            <circle cx="26" cy="5" r="4" fill="#C27C5C"/>
+                            <path d="M26 9 L26 18" stroke="#C27C5C" stroke-width="3.5" stroke-linecap="round"/>
+                            <path d="M26 18 L22 28 M26 18 L30 28" stroke="#C27C5C" stroke-width="3.5" stroke-linecap="round"/>
+                            <circle cx="42" cy="5" r="4" fill="#D4A03C"/>
+                            <path d="M42 9 L42 18" stroke="#D4A03C" stroke-width="3.5" stroke-linecap="round"/>
+                            <path d="M42 11 L48 6" stroke="#D4A03C" stroke-width="3.5" stroke-linecap="round"/>
+                            <path d="M42 18 L38 28 M42 18 L46 28" stroke="#D4A03C" stroke-width="3.5" stroke-linecap="round"/>
+                            <path d="M10 11 L26 11 L42 11" stroke="#C27C5C" stroke-width="3.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <p>Preserving and sharing Zambia's rich cultural heritage for future generations.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="heritage-sites.html">Heritage Sites</a></li>
+                        <li><a href="index.html#timeline">Timeline</a></li>
+                        <li><a href="women-in-history.html">Women in History</a></li>
+                        <li><a href="religion-in-zambia.html">Religion in Zambia</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Get Involved</h4>
+                    <ul>
+                        <li><a href="index.html#contribute">Share Your Story</a></li>
+                        <li><a href="#">Volunteer</a></li>
+                        <li><a href="#">Donate</a></li>
+                        <li><a href="#">Partner With Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="about.html">Our Mission</a></li>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Museum of Living Heritage. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Twitter">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Instagram">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

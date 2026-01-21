@@ -5,51 +5,53 @@
 
 /* CSS Custom Properties */
 :root {
-    /* Primary Colors - Warm earthy tones with purple accent */
-    --color-primary: #8B5A2B;
-    --color-primary-dark: #5D3A1A;
-    --color-primary-light: #A67C52;
+    /* Primary Brand Color - Deep Teal */
+    --color-primary: #2D6A6A;
+    --color-primary-dark: #1E4A4A;
+    --color-primary-light: #4A8F8F;
 
-    /* Accent Colors */
-    --color-accent: #9B6B9E;
-    --color-accent-light: #C9A7CB;
+    /* Accent Color - Warm Terracotta */
+    --color-accent: #C27C5C;
+    --color-accent-light: #E8A88A;
 
-    /* Neutrals */
-    --color-black: #1A1A1A;
-    --color-dark-gray: #3D3D3D;
-    --color-gray: #6B6B6B;
-    --color-medium-gray: #9A9A9A;
+    /* Neutrals - High Contrast */
+    --color-black: #1F1F1F;
+    --color-dark-gray: #333333;
+    --color-gray: #5C5C5C;
+    --color-medium-gray: #8A8A8A;
+    --color-light-gray: #E5E5E5;
+    --color-off-white: #FAF8F6;
     --color-white: #FFFFFF;
 
-    /* Vibrant colorful palette */
-    --color-terracotta: #E07B54;
-    --color-terracotta-light: #FCEEE8;
-    --color-sage: #7D9B76;
-    --color-sage-light: #EBF2E9;
+    /* Subtle Background Tints */
+    --color-warm-cream: #FDFBF8;
+    --color-sand: #F5F1EB;
+
+    /* Colorful Palette - for variety */
+    --color-teal: #2D6A6A;
+    --color-terracotta: #C27C5C;
     --color-ochre: #D4A03C;
-    --color-ochre-light: #FDF6E3;
-    --color-clay: #C4846C;
-    --color-clay-light: #F9EDE8;
-    --color-sand: #E8DBC4;
-    --color-warm-cream: #FFF8F0;
+    --color-plum: #7B506F;
+    --color-forest: #4A7C59;
+    --color-rust: #A45A3D;
+    --color-navy: #3D5A6F;
+    --color-burgundy: #6B3A3A;
 
-    /* Purple palette */
-    --color-violet: #7B4B94;
-    --color-violet-light: #F3EBF6;
-    --color-plum: #8E4585;
-    --color-plum-light: #F8EDF7;
-    --color-lavender: #9D8EC7;
-    --color-lavender-light: #F0EDF8;
-    --color-amethyst: #6B5B95;
-    --color-amethyst-light: #EDEAF3;
+    /* Light versions for backgrounds - Black, Brown, White */
+    --color-teal-light: #FFFFFF;
+    --color-terracotta-light: #F5F0EB;
+    --color-ochre-light: #FFFFFF;
+    --color-plum-light: #2C2420;
+    --color-forest-light: #F5F0EB;
+    --color-rust-light: #FFFFFF;
+    --color-navy-light: #2C2420;
 
-    /* Additional vibrant colors */
-    --color-coral: #FF6F61;
-    --color-coral-light: #FFECE9;
-    --color-teal: #45B7AA;
-    --color-teal-light: #E5F6F4;
-    --color-gold: #FFB347;
-    --color-gold-light: #FFF5E6;
+    /* Legacy compatibility */
+    --color-sage: #4A7C59;
+    --color-sage-light: #F2F7F4;
+
+    /* Focus state */
+    --color-focus: #FFD700;
 
     /* Typography */
     --font-heading: 'Playfair Display', Georgia, serif;
@@ -98,8 +100,8 @@ body {
     font-family: var(--font-body);
     font-size: 16px;
     line-height: 1.7;
-    color: var(--color-dark-gray);
-    background-color: var(--color-warm-cream);
+    color: var(--color-black);
+    background-color: var(--color-white);
     letter-spacing: -0.01em;
 }
 
@@ -152,6 +154,10 @@ select:focus {
     padding: 0 var(--spacing-lg);
 }
 
+.hero .container {
+    padding-left: var(--spacing-xl);
+}
+
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
@@ -176,7 +182,7 @@ h3 {
 }
 
 p {
-    color: var(--color-gray);
+    color: var(--color-dark-gray);
 }
 
 /* Buttons */
@@ -467,6 +473,7 @@ p {
     min-height: 600px;
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     margin-top: 72px;
 }
 
@@ -495,8 +502,11 @@ p {
 
 .hero-content {
     position: relative;
-    max-width: 600px;
+    max-width: 520px;
     color: var(--color-white);
+    text-align: left;
+    margin-left: 0;
+    padding-left: 0;
 }
 
 .hero-content h1 {
@@ -530,8 +540,8 @@ section {
 }
 
 .section-header p {
-    color: var(--color-gray);
-    font-size: 1.0625rem;
+    color: var(--color-dark-gray);
+    font-size: 1.125rem;
     line-height: 1.7;
 }
 
@@ -539,8 +549,9 @@ section {
    Topics Carousel Section
    ======================================== */
 .topics-section {
-    background: var(--color-gold-light);
+    background: var(--color-teal-light);
     padding: var(--spacing-xxl) 0;
+    border-bottom: none;
 }
 
 .topics-carousel-wrapper {
@@ -603,7 +614,7 @@ section {
     background: linear-gradient(
         to bottom,
         transparent 0%,
-        rgba(93, 71, 119, 0.3) 100%
+        rgba(29, 112, 68, 0.2) 100%
     );
 }
 
@@ -613,7 +624,7 @@ section {
 
 .topic-tag {
     display: inline-block;
-    background: linear-gradient(135deg, var(--color-violet), var(--color-plum));
+    background: var(--color-primary);
     color: var(--color-white);
     padding: 0.25rem 0.75rem;
     font-size: 0.6875rem;
@@ -624,6 +635,14 @@ section {
     margin-bottom: 0.75rem;
 }
 
+/* Colorful topic tags */
+.topic-card:nth-child(1) .topic-tag { background: var(--color-plum); }
+.topic-card:nth-child(2) .topic-tag { background: var(--color-navy); }
+.topic-card:nth-child(3) .topic-tag { background: var(--color-ochre); }
+.topic-card:nth-child(4) .topic-tag { background: var(--color-rust); }
+.topic-card:nth-child(5) .topic-tag { background: var(--color-forest); }
+.topic-card:nth-child(6) .topic-tag { background: var(--color-burgundy); }
+
 .topic-card-content h3 {
     font-size: 1.25rem;
     margin-bottom: 0.5rem;
@@ -632,7 +651,7 @@ section {
 
 .topic-card-content p {
     font-size: 0.9375rem;
-    color: var(--color-gray);
+    color: var(--color-dark-gray);
     line-height: 1.6;
     margin-bottom: var(--spacing-sm);
 }
@@ -678,7 +697,7 @@ section {
    Explorer Section with Filters
    ======================================== */
 .explorer-section {
-    background-color: var(--color-ochre-light);
+    background-color: var(--color-terracotta-light);
 }
 
 .filter-controls {
@@ -776,7 +795,7 @@ section {
     position: absolute;
     top: var(--spacing-sm);
     left: var(--spacing-sm);
-    background: var(--color-terracotta);
+    background: var(--color-primary);
     color: var(--color-white);
     padding: 0.375rem 0.875rem;
     font-size: 0.75rem;
@@ -785,6 +804,14 @@ section {
     letter-spacing: 0.03em;
     border-radius: var(--radius-sm);
 }
+
+/* Category-based tag colors */
+.history-card[data-category="museum"] .history-card-tag { background: var(--color-navy); }
+.history-card[data-category="waterfall"] .history-card-tag { background: var(--color-teal); }
+.history-card[data-category="historic-building"] .history-card-tag { background: var(--color-terracotta); }
+.history-card[data-category="monument"] .history-card-tag { background: var(--color-ochre); }
+.history-card[data-category="rock-art"] .history-card-tag { background: var(--color-rust); }
+.history-card[data-category="archaeological-site"] .history-card-tag { background: var(--color-plum); }
 
 .history-card-content {
     padding: var(--spacing-md) var(--spacing-md) var(--spacing-lg);
@@ -804,7 +831,7 @@ section {
 }
 
 .history-card-content p {
-    color: var(--color-gray);
+    color: var(--color-dark-gray);
     font-size: 0.9375rem;
     line-height: 1.65;
 }
@@ -832,7 +859,7 @@ section {
 .no-results {
     text-align: center;
     padding: var(--spacing-xxl);
-    color: var(--color-gray);
+    color: var(--color-dark-gray);
 }
 
 .no-results h3 {
@@ -844,7 +871,14 @@ section {
    Timeline Section
    ======================================== */
 .timeline-section {
-    background: var(--color-sage-light);
+    background: var(--color-plum-light);
+    border-top: none;
+    border-bottom: none;
+}
+
+.timeline-section .section-header h2,
+.timeline-section .section-header p {
+    color: var(--color-white);
 }
 
 .timeline {
@@ -861,11 +895,10 @@ section {
     top: 0;
     bottom: 0;
     width: 3px;
-    background: linear-gradient(
-        to bottom,
-        var(--color-sage),
-        var(--color-terracotta),
-        var(--color-ochre)
+    background: linear-gradient(to bottom,
+        var(--color-terracotta) 0%,
+        var(--color-ochre) 50%,
+        var(--color-accent-light) 100%
     );
     border-radius: 2px;
 }
@@ -885,15 +918,16 @@ section {
     top: 4px;
     width: 14px;
     height: 14px;
-    background: var(--color-white);
-    border: 3px solid var(--color-sage);
+    background: var(--color-accent);
+    border: 3px solid var(--color-white);
     border-radius: 50%;
     z-index: 1;
     transition: all var(--transition-fast);
 }
 
 .timeline-item:hover .timeline-marker {
-    background: var(--color-sage);
+    background: var(--color-white);
+    border-color: var(--color-accent);
     transform: scale(1.3);
 }
 
@@ -902,7 +936,7 @@ section {
     padding: var(--spacing-md) var(--spacing-lg);
     border-radius: var(--radius-md);
     transition: all var(--transition-normal);
-    border-left: 3px solid var(--color-sage);
+    border-left: 3px solid var(--color-primary);
 }
 
 .timeline-item:hover .timeline-content {
@@ -911,7 +945,7 @@ section {
 
 .timeline-date {
     display: inline-block;
-    background: var(--color-terracotta);
+    background: var(--color-accent);
     color: var(--color-white);
     padding: 0.25rem 0.75rem;
     font-size: 0.8125rem;
@@ -920,12 +954,20 @@ section {
     margin-bottom: 0.75rem;
 }
 
+/* Colorful timeline dates */
+.timeline-item:nth-child(1) .timeline-date { background: var(--color-teal); }
+.timeline-item:nth-child(2) .timeline-date { background: var(--color-forest); }
+.timeline-item:nth-child(3) .timeline-date { background: var(--color-ochre); }
+.timeline-item:nth-child(4) .timeline-date { background: var(--color-terracotta); }
+.timeline-item:nth-child(5) .timeline-date { background: var(--color-plum); }
+.timeline-item:nth-child(6) .timeline-date { background: var(--color-navy); }
+
 .timeline-content h3 {
     margin-bottom: 0.5rem;
 }
 
 .timeline-content p {
-    color: var(--color-gray);
+    color: var(--color-dark-gray);
     font-size: 0.9375rem;
     line-height: 1.65;
 }
@@ -934,7 +976,92 @@ section {
    Contribute Section
    ======================================== */
 .contribute-section {
-    background: var(--color-coral-light);
+    background: var(--color-ochre-light);
+}
+
+/* Topic Contributions */
+.topic-contributions {
+    margin-bottom: var(--spacing-xl);
+}
+
+.topic-contributions h3 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-black);
+}
+
+.topic-contributions > p {
+    color: var(--color-gray);
+    margin-bottom: var(--spacing-lg);
+}
+
+.topic-contrib-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.topic-contrib-card {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-normal);
+    text-decoration: none;
+}
+
+.topic-contrib-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.topic-contrib-icon {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+}
+
+.topic-contrib-card h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-black);
+    margin-bottom: 0.25rem;
+}
+
+.topic-contrib-card p {
+    font-size: 0.875rem;
+    color: var(--color-gray);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.contribute-divider {
+    display: flex;
+    align-items: center;
+    margin: var(--spacing-xl) 0;
+}
+
+.contribute-divider::before,
+.contribute-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--color-medium-gray);
+}
+
+.contribute-divider span {
+    padding: 0 var(--spacing-md);
+    color: var(--color-gray);
+    font-size: 0.9375rem;
+    font-weight: 500;
 }
 
 .contribute-grid {
@@ -987,7 +1114,7 @@ section {
 .contribute-form select:focus,
 .contribute-form textarea:focus {
     outline: none;
-    border-color: var(--color-coral);
+    border-color: var(--color-primary);
 }
 
 .contribute-form textarea {
@@ -996,18 +1123,18 @@ section {
 }
 
 .file-upload {
-    border: 2px dashed var(--color-sand);
+    border: 2px dashed var(--color-light-gray);
     border-radius: var(--radius-md);
     padding: var(--spacing-lg);
     text-align: center;
     cursor: pointer;
     transition: all var(--transition-fast);
-    color: var(--color-gray);
+    color: var(--color-dark-gray);
 }
 
 .file-upload:hover {
-    border-color: var(--color-coral);
-    background: var(--color-coral-light);
+    border-color: var(--color-primary);
+    background: var(--color-sage-light);
 }
 
 .file-upload svg {
@@ -1030,7 +1157,7 @@ section {
     align-items: center;
     gap: 0.5rem;
     padding: 0.875rem 1.5rem;
-    background: var(--color-coral);
+    background: var(--color-accent);
     color: var(--color-white);
     border: none;
     border-radius: var(--radius-md);
@@ -1058,7 +1185,7 @@ section {
 
 .recording-status {
     font-size: 0.875rem;
-    color: var(--color-gray);
+    color: var(--color-dark-gray);
 }
 
 .submit-btn {
@@ -1069,7 +1196,7 @@ section {
 /* Recent Contributions */
 .recent-contributions h3 {
     margin-bottom: var(--spacing-md);
-    color: var(--color-primary);
+    color: var(--color-black);
 }
 
 .contribution-card {
@@ -1113,7 +1240,7 @@ section {
 .contributor-avatar {
     width: 40px;
     height: 40px;
-    background: linear-gradient(135deg, var(--color-terracotta), var(--color-ochre));
+    background: var(--color-teal);
     color: var(--color-white);
     border-radius: 50%;
     display: flex;
@@ -1122,6 +1249,11 @@ section {
     font-weight: 600;
     font-size: 0.875rem;
 }
+
+/* Colorful avatars */
+.contribution-card:nth-child(1) .contributor-avatar { background: var(--color-plum); }
+.contribution-card:nth-child(2) .contributor-avatar { background: var(--color-forest); }
+.contribution-card:nth-child(3) .contributor-avatar { background: var(--color-terracotta); }
 
 .contribution-header strong {
     display: block;
@@ -1142,7 +1274,7 @@ section {
 
 .contribution-card p {
     font-size: 0.9375rem;
-    color: var(--color-gray);
+    color: var(--color-dark-gray);
     line-height: 1.6;
     margin-bottom: var(--spacing-sm);
 }
@@ -1154,8 +1286,8 @@ section {
 }
 
 .period-tag {
-    background: var(--color-sage-light);
-    color: var(--color-sage);
+    background: var(--color-light-gray);
+    color: var(--color-dark-gray);
     padding: 0.25rem 0.75rem;
     border-radius: var(--radius-sm);
     font-size: 0.75rem;
@@ -1165,7 +1297,7 @@ section {
 .has-audio,
 .has-photos {
     font-size: 0.75rem;
-    color: var(--color-coral);
+    color: var(--color-primary);
     font-weight: 500;
 }
 
@@ -1173,7 +1305,8 @@ section {
    About Section
    ======================================== */
 .about-section {
-    background: var(--color-teal-light);
+    background: var(--color-forest-light);
+    border-top: none;
 }
 
 .about-grid {
@@ -1195,7 +1328,7 @@ section {
 }
 
 .about-content p {
-    color: var(--color-gray);
+    color: var(--color-dark-gray);
     margin-bottom: var(--spacing-md);
     font-size: 1.0625rem;
     line-height: 1.75;
@@ -1210,7 +1343,7 @@ section {
    Newsletter Section
    ======================================== */
 .newsletter-section {
-    background: linear-gradient(135deg, var(--color-sage) 0%, var(--color-teal) 100%);
+    background: linear-gradient(135deg, var(--color-teal) 0%, var(--color-navy) 100%);
     color: var(--color-white);
 }
 

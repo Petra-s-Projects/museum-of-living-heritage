@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <title>Women in Zambian History - Museum of Living Heritage</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .women-hero {
+            position: relative;
+            height: 50vh;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            margin-top: 72px;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+        }
+
+        .women-hero-content {
+            position: relative;
+            max-width: 700px;
+            color: var(--color-white);
+            padding-left: var(--spacing-xl);
+        }
+
+        .women-hero-content h1 {
+            color: var(--color-white);
+            margin-bottom: var(--spacing-md);
+            font-size: clamp(2rem, 4vw, 3rem);
+        }
+
+        .women-hero-content p {
+            font-size: 1.125rem;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.7;
+        }
+
+        .women-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: var(--spacing-xl);
+            padding: var(--spacing-xxl) 0;
+        }
+
+        .woman-card {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-normal);
+        }
+
+        .woman-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .woman-card-image {
+            height: 280px;
+            overflow: hidden;
+            background: var(--color-off-white);
+        }
+
+        .woman-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-slow);
+        }
+
+        .woman-card:hover .woman-card-image img {
+            transform: scale(1.05);
+        }
+
+        .woman-card-content {
+            padding: var(--spacing-lg);
+        }
+
+        .woman-card-era {
+            display: inline-block;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            border-radius: var(--radius-sm);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .woman-card-content h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-black);
+        }
+
+        .woman-card-role {
+            font-size: 0.9375rem;
+            color: var(--color-primary);
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .woman-card-content p {
+            color: var(--color-dark-gray);
+            font-size: 0.9375rem;
+            line-height: 1.7;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .woman-card-achievements {
+            border-top: 1px solid var(--color-light-gray);
+            padding-top: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .woman-card-achievements h4 {
+            font-size: 0.8125rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-gray);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .woman-card-achievements ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .woman-card-achievements li {
+            font-size: 0.875rem;
+            color: var(--color-dark-gray);
+            padding-left: 1.25rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+
+        .woman-card-achievements li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 6px;
+            height: 6px;
+            background: var(--color-primary);
+            border-radius: 50%;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-primary);
+            font-weight: 600;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .back-link:hover {
+            color: var(--color-primary-dark);
+        }
+
+        .intro-section {
+            background: var(--color-off-white);
+            padding: var(--spacing-xl) 0;
+            border-bottom: 1px solid var(--color-light-gray);
+        }
+
+        .intro-content {
+            max-width: 800px;
+        }
+
+        .intro-content p {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: var(--color-dark-gray);
+        }
+
+        @media (max-width: 767px) {
+            .women-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .women-hero-content {
+                padding: 0 var(--spacing-lg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="logo">
+                    <a href="index.html">
+                        <svg class="logo-icon" width="78" height="54" viewBox="0 0 52 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="10" cy="5" r="4" fill="#A45A3D"/>
+                            <path d="M10 9 L10 18" stroke="#A45A3D" stroke-width="3.5" stroke-linecap="round"/>
+                            <path d="M10 11 L4 6" stroke="#A45A3D" stroke-width="3.5" stroke-linecap="round"/>
+                            <path d="M10 18 L6 28 M10 18 L14 28" stroke="#A45A3D" stroke-width="3.5" stroke-linecap="round"/>
+                            <circle cx="26" cy="5" r="4" fill="#C27C5C"/>
+                            <path d="M26 9 L26 18" stroke="#C27C5C" stroke-width="3.5" stroke-linecap="round"/>
+                            <path d="M26 18 L22 28 M26 18 L30 28" stroke="#C27C5C" stroke-width="3.5" stroke-linecap="round"/>
+                            <circle cx="42" cy="5" r="4" fill="#D4A03C"/>
+                            <path d="M42 9 L42 18" stroke="#D4A03C" stroke-width="3.5" stroke-linecap="round"/>
+                            <path d="M42 11 L48 6" stroke="#D4A03C" stroke-width="3.5" stroke-linecap="round"/>
+                            <path d="M42 18 L38 28 M42 18 L46 28" stroke="#D4A03C" stroke-width="3.5" stroke-linecap="round"/>
+                            <path d="M10 11 L26 11 L42 11" stroke="#C27C5C" stroke-width="3.5" stroke-linecap="round"/>
+                        </svg>
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="heritage-sites.html">Heritage Sites</a></li>
+                        <li><a href="index.html#contribute">Contribute</a></li>
+                        <li><a href="index.html#timeline">Timeline</a></li>
+                        <li><a href="about.html">About the Museum</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <button class="search-btn" aria-label="Search">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="M21 21l-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                    <button class="mobile-menu-btn" aria-label="Menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="women-hero">
+        <div class="women-hero-content container">
+            <h1>Women in Zambian History</h1>
+            <p>From queens and freedom fighters to educators and activists, these remarkable women shaped our nation's story. Their courage, leadership, and vision continue to inspire generations.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Introduction -->
+        <section class="intro-section">
+            <div class="container">
+                <a href="index.html" class="back-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                    Back to Home
+                </a>
+                <div class="intro-content">
+                    <p>Throughout Zambia's history, women have played pivotal roles as rulers, resistance leaders, educators, and nation-builders. Yet many of their stories remain untold. This collection celebrates the extraordinary women whose contributions have shaped Zambia from pre-colonial times to the present day.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Women Cards -->
+        <section class="container">
+            <div class="women-grid">
+                <!-- Julia Chikamoneka -->
+                <article class="woman-card">
+                    <div class="woman-card-image">
+                        <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&q=80" alt="Julia Chikamoneka" />
+                    </div>
+                    <div class="woman-card-content">
+                        <span class="woman-card-era">Independence Era</span>
+                        <h2>Julia Chikamoneka</h2>
+                        <p class="woman-card-role">Freedom Fighter & Activist (1910-1986)</p>
+                        <p>One of the most prominent women in Zambia's independence struggle. She mobilised women across the country, organised protests against colonial rule, and was imprisoned multiple times for her activism.</p>
+                        <div class="woman-card-achievements">
+                            <h4>Key Achievements</h4>
+                            <ul>
+                                <li>Founded the Women's League of the African National Congress</li>
+                                <li>Led the women's march against the Federation of Rhodesia and Nyasaland</li>
+                                <li>First woman to be appointed to the Zambian Cabinet</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Mama Betty Kaunda -->
+                <article class="woman-card">
+                    <div class="woman-card-image">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&q=80" alt="Betty Kaunda" />
+                    </div>
+                    <div class="woman-card-content">
+                        <span class="woman-card-era">Independence Era</span>
+                        <h2>Betty Kaunda</h2>
+                        <p class="woman-card-role">First Lady & Humanitarian (1928-2012)</p>
+                        <p>Wife of Zambia's founding president Kenneth Kaunda, she was a pillar of strength during the independence movement and dedicated her life to championing the rights of women, children, and the underprivileged.</p>
+                        <div class="woman-card-achievements">
+                            <h4>Key Achievements</h4>
+                            <ul>
+                                <li>Supported the independence movement alongside her husband</li>
+                                <li>Championed women's education and healthcare</li>
+                                <li>Founded charitable organisations for orphans and vulnerable children</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Alice Lenshina -->
+                <article class="woman-card">
+                    <div class="woman-card-image">
+                        <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=600&q=80" alt="Alice Lenshina" />
+                    </div>
+                    <div class="woman-card-content">
+                        <span class="woman-card-era">Colonial Period</span>
+                        <h2>Alice Lenshina Mulenga</h2>
+                        <p class="woman-card-role">Religious Leader (1920-1978)</p>
+                        <p>Founder of the Lumpa Church, one of the largest independent African churches. Her movement attracted over 100,000 followers and represented a powerful assertion of African spiritual independence from colonial missionary churches.</p>
+                        <div class="woman-card-achievements">
+                            <h4>Key Achievements</h4>
+                            <ul>
+                                <li>Founded the Lumpa Church in 1955</li>
+                                <li>Built a movement that challenged both colonial and post-colonial authority</li>
+                                <li>Created a uniquely African Christian tradition</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Inonge Wina -->
+                <article class="woman-card">
+                    <div class="woman-card-image">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80" alt="Inonge Wina" />
+                    </div>
+                    <div class="woman-card-content">
+                        <span class="woman-card-era">Modern Zambia</span>
+                        <h2>Inonge Wina</h2>
+                        <p class="woman-card-role">First Female Vice President (1941-)</p>
+                        <p>A trailblazer in Zambian politics, she became the first female Vice President of Zambia in 2015. Her career spans decades of public service, from independence activism to the highest office ever held by a woman in Zambia.</p>
+                        <div class="woman-card-achievements">
+                            <h4>Key Achievements</h4>
+                            <ul>
+                                <li>First female Vice President of Zambia (2015-2021)</li>
+                                <li>Served as Minister in multiple governments</li>
+                                <li>Advocate for women's participation in politics</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Mulenga Kapwepwe -->
+                <article class="woman-card">
+                    <div class="woman-card-image">
+                        <img src="https://images.unsplash.com/photo-1589156280159-27698a70f29e?w=600&q=80" alt="Mulenga Kapwepwe" />
+                    </div>
+                    <div class="woman-card-content">
+                        <span class="woman-card-era">Modern Zambia</span>
+                        <h2>Mulenga Kapwepwe</h2>
+                        <p class="woman-card-role">Cultural Preservationist (1950s-)</p>
+                        <p>Daughter of independence leader Simon Kapwepwe, she has dedicated her life to preserving Zambian cultural heritage. Founder of the Zintu Interpretive Centre, she works tirelessly to document and celebrate traditional Zambian arts and customs.</p>
+                        <div class="woman-card-achievements">
+                            <h4>Key Achievements</h4>
+                            <ul>
+                                <li>Founded the Zintu Interpretive Centre</li>
+                                <li>Documented traditional Zambian ceremonies and practices</li>
+                                <li>Advocate for preserving indigenous knowledge</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Mama Chibesakunda -->
+                <article class="woman-card">
+                    <div class="woman-card-image">
+                        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&q=80" alt="Lombe Chibesakunda" />
+                    </div>
+                    <div class="woman-card-content">
+                        <span class="woman-card-era">Modern Zambia</span>
+                        <h2>Lombe Phyllis Chibesakunda</h2>
+                        <p class="woman-card-role">First Female Chief Justice (1944-)</p>
+                        <p>A pioneering legal mind who became Zambia's first female Chief Justice in 2011. Her distinguished career broke numerous glass ceilings in the legal profession and inspired generations of women lawyers.</p>
+                        <div class="woman-card-achievements">
+                            <h4>Key Achievements</h4>
+                            <ul>
+                                <li>First female Chief Justice of Zambia</li>
+                                <li>First Zambian woman admitted to the Bar</li>
+                                <li>Served as Acting President of Zambia</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Edith Nawakwi -->
+                <article class="woman-card">
+                    <div class="woman-card-image">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&q=80" alt="Edith Nawakwi" />
+                    </div>
+                    <div class="woman-card-content">
+                        <span class="woman-card-era">Modern Zambia</span>
+                        <h2>Edith Nawakwi</h2>
+                        <p class="woman-card-role">Politician & Economist (1960-)</p>
+                        <p>First female Minister of Finance in Zambia and one of the most prominent female politicians in the country's history. Known for her bold leadership and economic expertise during challenging times.</p>
+                        <div class="woman-card-achievements">
+                            <h4>Key Achievements</h4>
+                            <ul>
+                                <li>First female Minister of Finance (1999-2001)</li>
+                                <li>President of the Forum for Democracy and Development</li>
+                                <li>Advocate for economic reform and good governance</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Queen Mwape -->
+                <article class="woman-card">
+                    <div class="woman-card-image">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&q=80" alt="Queen Mwape" />
+                    </div>
+                    <div class="woman-card-content">
+                        <span class="woman-card-era">Pre-Colonial</span>
+                        <h2>Queen Mwape</h2>
+                        <p class="woman-card-role">Bemba Queen Mother</p>
+                        <p>In Bemba tradition, the position of Queen Mother (Chandamukulu) held immense power. Queen Mwape and other Chandamukulu wielded significant political influence, advising chiefs and sometimes ruling in their own right.</p>
+                        <div class="woman-card-achievements">
+                            <h4>Key Achievements</h4>
+                            <ul>
+                                <li>Held the sacred position of Chandamukulu</li>
+                                <li>Advised on matters of state and succession</li>
+                                <li>Preserved and transmitted royal traditions</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <p>Preserving and sharing Zambia's living history for future generations.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="index.html#timeline">Timeline</a></li>
+                        <li><a href="index.html#explore">Heritage Sites</a></li>
+                        <li><a href="#">Archaeological Sites</a></li>
+                        <li><a href="#">Cultural Heritage</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Research Archives</a></li>
+                        <li><a href="#">Educational Materials</a></li>
+                        <li><a href="#">Image Gallery</a></li>
+                        <li><a href="#">Bibliography</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="index.html#about">Our Mission</a></li>
+                        <li><a href="#">Contributors</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Support the Project</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Museum of Living Heritage. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook">FB</a>
+                    <a href="#" aria-label="Twitter">TW</a>
+                    <a href="#" aria-label="Instagram">IG</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
